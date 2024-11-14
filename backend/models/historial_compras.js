@@ -1,24 +1,31 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class historial_compras extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class HistorialCompras extends Model {
+   
     static associate(models) {
-      // define association here
+      // Relación con Pedidos
+      HistorialCompras.belongsTo(models.Pedidos, {
+        foreignKey: 'id_pedidos',
+        as: 'pedido'
+      });
+      models.Pedidos.hasMany(HistorialCompras, {
+        foreignKey: 'id_pedidos',
+        as: 'Historiales'
+      });
     }
   }
-  historial_compras.init({
+
+  HistorialCompras.init({
     id_pedidos: DataTypes.INTEGER,
     fecha_compra: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'historial_compras',
+    modelName: 'Historial_Compras',
+    tableName: 'Historial_compras',
+    timestamps: true// Puedes habilitarlo si necesitas createdAt y updatedAt
   });
-  return historial_compras;
+
+  return HistorialCompras;
 };
