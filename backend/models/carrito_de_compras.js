@@ -1,25 +1,56 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class carrito_de_compras extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+// Importación de Sequelize y DataTypes
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+  class CarritoDeCompras extends Model {
     static associate(models) {
-      // define association here
+      // Relación con Producto
+      CarritoDeCompras.belongsTo(models.Producto, {
+        foreignKey: 'id_producto',
+        as: 'Producto'
+      });
+
+      // Relación con Cliente
+      CarritoDeCompras.belongsTo(models.Cliente, {
+        foreignKey: 'id_cliente',
+        as: 'Cliente'
+      });
+      // Relación entre Producto y CarritoDeCompras
+      Producto.hasMany(models.CarritoDeCompras, { foreignKey: 'id_producto' });
+      CarritoDeCompras.belongsTo(models.Producto, { foreignKey: 'id_producto' });
+
+      // Relación entre Cliente y CarritoDeCompras
+      Cliente.hasMany(models.CarritoDeCompras, { foreignKey: 'id_cliente' });
+      CarritoDeCompras.belongsTo(models.Cliente, { foreignKey: 'id_cliente' });
+
     }
   }
-  carrito_de_compras.init({
-    id_producto: DataTypes.INTEGER,
-    id_cliente: DataTypes.INTEGER,
-    cantidad: DataTypes.INTEGER
+
+  CarritoDeCompras.init({
+    id_carrito: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    id_producto: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    cantidad: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   }, {
     sequelize,
-    modelName: 'carrito_de_compras',
+    modelName: 'Carrito_De_Compras',
+    tableName: 'Carrito_de_compras',
+    timestamps: true
   });
-  return carrito_de_compras;
+
+  return CarritoDeCompras;
 };
