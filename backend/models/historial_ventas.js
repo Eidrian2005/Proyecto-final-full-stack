@@ -2,27 +2,55 @@
 const {
   Model
 } = require('sequelize');
+const productos = require('./productos');
 module.exports = (sequelize, DataTypes) => {
-  class historial_ventas extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class Historial_ventas extends Model {
     static associate(models) {
+
       // define association here
+      this.belongsTo(models.productos, {foreignKey: "id_producto"})
+
     }
   }
-  historial_ventas.init({
-    id_producto: DataTypes.INTEGER,
-    id_cliente: DataTypes.INTEGER,
-    id_pedidos: DataTypes.INTEGER,
-    fecha_venta: DataTypes.DATE,
-    cantidad_vendida: DataTypes.INTEGER,
-    total_venta: DataTypes.DECIMAL
+  Historial_ventas.init({
+    id_producto:{ 
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Productos",
+        key: "id"
+      }
+    },
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Clientes",
+        key: "id"
+      }
+    },
+    id_pedidos: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Pedidos",
+        key: "id"
+      }
+    },
+    fecha_venta: {
+      type:DataTypes.DATE
+    },
+    cantidad_vendida:{ 
+      type:DataTypes.INTEGER
+    },
+    total_venta: {
+      type:DataTypes.DECIMAL
+    }
   }, {
     sequelize,
-    modelName: 'historial_ventas',
+    modelName: 'Historial_ventas',
+    tableName: "Historial_ventas",
+    timestamps: true,
   });
-  return historial_ventas;
+  return Historial_ventas;
 };
