@@ -4,20 +4,27 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Informacion_de_pago extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Pedidos, {foreignKey: 'id_informacion_pago'})
     }
   }
   Informacion_de_pago.init({
-    nombre_de_tarjeta: DataTypes.STRING,
-    numero_de_tarjeta: DataTypes.INTEGER,
-    fecha_de_vencimiento: DataTypes.DATE,
-    codigo_de_seguridad: DataTypes.INTEGER
+    nombre_de_tarjeta: {
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    numero_de_tarjeta: {
+      type:DataTypes.INTEGER,
+      allowNull: false
+    },
+    fecha_de_vencimiento: {
+      type:DataTypes.DATE,
+      allowNull: false
+    },
+    codigo_de_seguridad: {
+      type:DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Informacion_de_pago',

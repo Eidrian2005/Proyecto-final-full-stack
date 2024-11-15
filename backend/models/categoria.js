@@ -6,12 +6,18 @@ module.exports = (sequelize, DataTypes) => {
   class Categoria extends Model {
    
     static associate(models) {
-      // define association here
+      //relacion con productos
+      this.hasMany(models.Productos, { foreignKey: 'id_categoria'})
     }
   }
   Categoria.init({
-    categoria: DataTypes.STRING
-  }, {
+    categoria: {
+      type:DataTypes.STRING,
+      unique,
+      allowNull: false
+    }
+  }, 
+  {
     sequelize,
     modelName: 'Categoria',
     tableName: 'Categoria',

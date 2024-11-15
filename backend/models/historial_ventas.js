@@ -7,9 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   class Historial_ventas extends Model {
     static associate(models) {
 
-      // define association here
-      this.belongsTo(models.productos, {foreignKey: "id_producto"})
-
+      // relacion con productos
+      this.belongsTo(models.productos, { foreignKey: "id_producto" });
+      // relacion con clientes
+      this.belongsTo(models.clientes, { foreignKey: "id_cliente" });
+      // relacion con pedidos
+      this.belongsTo(models.pedidos, { foreignKey: "id_pedidos" })
     }
   }
   Historial_ventas.init({
@@ -38,13 +41,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     fecha_venta: {
-      type:DataTypes.DATE
+      type:DataTypes.DATE,
+      allowNull: false
     },
     cantidad_vendida:{ 
-      type:DataTypes.INTEGER
+      type:DataTypes.INTEGER,
+      allowNull: false
     },
     total_venta: {
-      type:DataTypes.DECIMAL
+      type:DataTypes.DECIMAL,
+      allowNull: false
     }
   }, {
     sequelize,

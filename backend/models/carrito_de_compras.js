@@ -3,32 +3,32 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  class CarritoDeCompras extends Model {
+  class Carrito_de_compras extends Model {
     static associate(models) {
       // Relación con Producto
-      CarritoDeCompras.belongsTo(models.Producto, {
+      Carrito_de_compras.belongsTo(models.Producto, {
         foreignKey: 'id_producto',
         as: 'Producto'
       });
 
       // Relación con Cliente
-      CarritoDeCompras.belongsTo(models.Cliente, {
+      Carrito_de_compras.belongsTo(models.Cliente, {
         foreignKey: 'id_cliente',
         as: 'Cliente'
       });
-      // Relación entre Producto y CarritoDeCompras
-      Producto.hasMany(models.CarritoDeCompras, { foreignKey: 'id_producto' });
-      CarritoDeCompras.belongsTo(models.Producto, { foreignKey: 'id_producto' });
+      // Relación entre Producto y Carrito_de_compras
+      Producto.hasMany(models.Carrito_de_compras, { foreignKey: 'id_producto' });
+      Carrito_de_compras.belongsTo(models.Producto, { foreignKey: 'id_producto' });
 
-      // Relación entre Cliente y CarritoDeCompras
-      Cliente.hasMany(models.CarritoDeCompras, { foreignKey: 'id_cliente' });
-      CarritoDeCompras.belongsTo(models.Cliente, { foreignKey: 'id_cliente' });
+      // Relación entre Cliente y Carrito_de_compras
+      Cliente.hasMany(models.Carrito_de_compras, { foreignKey: 'id_cliente' });
+      Carrito_de_compras.belongsTo(models.Cliente, { foreignKey: 'id_cliente' });
 
     }
   }
 
-  CarritoDeCompras.init({
-    id_carrito: {
+  Carrito_de_compras.init({
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -36,10 +36,18 @@ module.exports = (sequelize) => {
     id_producto: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "Productos",
+        key: "id"
+      }
     },
     id_cliente: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "Clientes",
+        key: "id"
+      }
     },
     cantidad: {
       type: DataTypes.INTEGER,
@@ -47,10 +55,10 @@ module.exports = (sequelize) => {
     }
   }, {
     sequelize,
-    modelName: 'Carrito_De_Compras',
+    modelName: 'Carrito_de_compras',
     tableName: 'Carrito_de_compras',
     timestamps: true
   });
 
-  return CarritoDeCompras;
+  return Carrito_de_compras;
 };

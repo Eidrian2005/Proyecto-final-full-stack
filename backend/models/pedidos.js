@@ -4,23 +4,69 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Pedidos extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+      //relacion con historial ventas
+      this.hasMany(models.Historial_compras, {foreignKey: 'id_pedidos'});
+
+      //relacion con historial ventas
+      this.hasMany(models.Historial_ventas, {foreignKey: 'id_pedidos'})
+
+      // Relación con Productos
+      this.belongsTo(models.Productos, {foreignKey: 'id_producto'})
+
+      // Relación con Clientes
+      this.belongsTo(models.Clientes, { foreignKey: 'id_cliente'})
+
+      // Relación con Condicion_pedido
+      this.belongsTo(models.Condicion_de_pedido, { foreignKey: 'id_condicion' })
+
+      // Relación con Informacion_de_pago 
+      this.belongsTo(models.Informacion_de_pago, { foreignKey: 'id_informacion_pago'});
+
     }
   }
   Pedidos.init({
-    id_producto: DataTypes.INTEGER,
-    id_cliente: DataTypes.INTEGER,
-    id_condicion: DataTypes.INTEGER,
-    id_informacion_pago: DataTypes.INTEGER,
-    fecha_de_pedido: DataTypes.DATE,
-    cantidad: DataTypes.INTEGER,
-    precio_total: DataTypes.DECIMAL
+    id_producto: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Productos",
+        key: "id"
+      }
+    },
+    id_cliente: {
+      type:DataTypes.INTEGER,
+      references: {
+        model: "CLientes",
+        key: "id"
+      }
+    },
+    id_condicion: {
+      type:DataTypes.INTEGER,
+      references: {
+        model: "Condicion_de_pedidos",
+        key: "id"
+      }
+    },
+    id_informacion_pago:{
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Informacion_de_pago",
+        key: "id"
+      }
+    },
+    fecha_de_pedido: {
+      type:DataTypes.DATE,
+      allowNull: false
+    },
+    cantidad: {
+      type:DataTypes.INTEGER,
+    allowNull: false
+    },
+    precio_total: {
+      type:DataTypes.DECIMAL,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Pedidos',
