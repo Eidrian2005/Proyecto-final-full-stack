@@ -4,19 +4,28 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Inventario extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      // relacion con productos
+      this.belongsTo(models.Productos, {foreignKey: 'id_producto'})
     }
   }
   Inventario.init({
-    id_producto: DataTypes.INTEGER,
-    cantidad_disponible: DataTypes.INTEGER,
-    fecha_actualizacion: DataTypes.DATE
+    id_producto: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      references: {
+        model: "Productos",
+        key: "id"
+      }
+    },
+    cantidad_disponible: {
+      type: DataTypes.INTEGER,
+    allowNull: false
+    },
+    fecha_actualizacion: {
+      type:DataTypes.DATE,
+    allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Inventario',

@@ -14,15 +14,46 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_cliente',
         as: 'Cliente'
       });
+
+     //relacion con historial venta
+      this.hasMany(models.Historial_ventas, {foreignKey: 'id_cliente'})
+
+      //relacion con lista de deseos
+      this.hasMany(models.Lista_de_deseos, { foreignKey: 'id_cliente' })
+
+      // Relación con Pedidos
+      this.hasMany(models.Pedidos, { foreignKey: 'id_cliente'});
+
+      // Relación con Tipo_usuario
+      this.hasOne(models.Tipo_usuario, { foreignKey: 'id_cliente'});
+
     }
   }
+  
 
   Clientes.init({
-    direccion: DataTypes.STRING,
-    imagen: DataTypes.BLOB,
-    usuario: DataTypes.STRING,
-    correo: DataTypes.STRING,
-    contraseña: DataTypes.STRING
+    direccion: {
+      type:DataTypes.STRING, 
+      allowNull: false
+    },
+    imagen:{
+      type: DataTypes.BLOB,
+      allowNull: true
+    },
+    usuario: {
+      type:DataTypes.STRING,
+      unique,
+      allowNull: false
+    },
+    correo: {
+      type:DataTypes.STRING,
+      unique,
+      allowNull: false
+    },
+    contraseña: {
+      type:DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Clientes',

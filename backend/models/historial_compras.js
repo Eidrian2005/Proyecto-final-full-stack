@@ -2,30 +2,40 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class HistorialCompras extends Model {
+  class Historial_compras extends Model {
    
     static associate(models) {
       // Relación con Pedidos
-      HistorialCompras.belongsTo(models.Pedidos, {
+      Historial_compras.belongsTo(models.Pedidos, {
         foreignKey: 'id_pedidos',
         as: 'pedido'
       });
-      models.Pedidos.hasMany(HistorialCompras, {
+      models.Pedidos.hasMany(Historial_compras, {
         foreignKey: 'id_pedidos',
         as: 'Historiales'
       });
     }
   }
 
-  HistorialCompras.init({
-    id_pedidos: DataTypes.INTEGER,
-    fecha_compra: DataTypes.DATE
+  Historial_compras.init({
+    id_pedidos: {
+      type:DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: "Pedidos",
+      key: "id"
+    }
+    },
+    fecha_compra: {
+      type:DataTypes.DATE,
+    allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'Historial_Compras',
     tableName: 'Historial_compras',
-    timestamps: true// Puedes habilitarlo si necesitas createdAt y updatedAt
+    timestamps: true
   });
 
-  return HistorialCompras;
+  return Historial_compras;
 };

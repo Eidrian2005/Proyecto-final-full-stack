@@ -2,29 +2,35 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class CondicionDePedidos extends Model {
+  class Condicion_de_pedidos extends Model {
   
     static associate(models) {
       // Relación con Pedidos
-      CondicionDePedidos.hasMany(models.Pedidos, {
+      Condicion_de_pedidos.hasMany(models.Pedidos, {
         foreignKey: 'id_condicion',
         as: 'Pedidos'
       });
-      models.Pedidos.belongsTo(CondicionDePedidos, {
+      models.Pedidos.belongsTo(Condicion_de_pedidos, {
         foreignKey: 'id_condicion',
         as: 'Condicion'
       });
+
+      //relacion de pedidos
+      this.hasMany(models.Pedidos, { foreignKey: 'id_condicion', as: 'pedidos' })
     }
   }
 
-  CondicionDePedidos.init({
-    descripcion: DataTypes.STRING
+  Condicion_de_pedidos.init({
+    descripcion: {
+      type:DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
-    modelName: 'Condicion_De_Pedidos',
-    tableName: 'Condicion_de_Pedidos',
+    modelName: 'Condicion_de_pedidos',
+    tableName: 'Condicion_de_pedidos',
     timestamps: true
   });
 
-  return CondicionDePedidos;
+  return Condicion_de_pedidos;
 };
