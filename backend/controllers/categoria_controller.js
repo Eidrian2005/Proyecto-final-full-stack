@@ -13,9 +13,9 @@ const get_all_Categoria = async (req, res) => {
 //----------------------Post------------------------//
 const post_Categoria = async (req, res) => {
   try {
-    const { nombre_categoria} = req.body;
-    const categoria = await Categorias.create({
-    nombre_categoria
+    const { categoria} = req.body;
+    const categorias = await Categorias.create({
+    categorias
     });
     res.status(201).json(categoria);
   } catch (error) {
@@ -28,12 +28,12 @@ const post_Categoria = async (req, res) => {
 const put_Categoria= async (req , res) => {
   try {
    const{id}=req.params
-   const  {  nombre_categoria }= req.body;
+   const  {  categoria }= req.body;
  
-   const categoria = await Categorias.findByPk(id);
+   const categorias = await Categorias.findByPk(id);
    if(!categoria) return res.status(404).json({error:'categoria no encontrada'});
  
-   await categoria.update({ nombre_categoria });
+   await categoria.update({ categorias });
    res.status(200).json(categoria)
   } catch (error) {
    res.status(500).json({error:'error al actualizar la Categoria.'})
