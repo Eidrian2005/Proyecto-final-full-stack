@@ -2,7 +2,7 @@
   "development": {
     "username": "eidrian",
     "password": "EDGAV20052506",
-    "database": "shedabo-shop",
+    "database": "shedaboshop",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

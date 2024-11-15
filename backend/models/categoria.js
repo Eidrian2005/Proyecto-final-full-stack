@@ -1,8 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require('sequelize');
+module.exports = (sequelize) => {
   class Categoria extends Model {
    
     static associate(models) {
@@ -12,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Categoria.init({
     categoria: {
-      type:DataTypes.STRING,
-      unique,
+      type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     }
   }, 

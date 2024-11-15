@@ -1,29 +1,21 @@
 'use strict';
-// Importación de Sequelize y DataTypes
+
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   class Carrito_de_compras extends Model {
     static associate(models) {
-      // Relación con Producto
-      Carrito_de_compras.belongsTo(models.Producto, {
+      // Relación con Producto 
+      Carrito_de_compras.belongsTo(models.Productos, {
         foreignKey: 'id_producto',
-        as: 'Producto'
+        as: 'Productos'
       });
 
-      // Relación con Cliente
-      Carrito_de_compras.belongsTo(models.Cliente, {
+      // Relación con Cliente 
+      Carrito_de_compras.belongsTo(models.Clientes, {
         foreignKey: 'id_cliente',
-        as: 'Cliente'
+        as: 'Clientes'
       });
-      // Relación entre Producto y Carrito_de_compras
-      Producto.hasMany(models.Carrito_de_compras, { foreignKey: 'id_producto' });
-      Carrito_de_compras.belongsTo(models.Producto, { foreignKey: 'id_producto' });
-
-      // Relación entre Cliente y Carrito_de_compras
-      Cliente.hasMany(models.Carrito_de_compras, { foreignKey: 'id_cliente' });
-      Carrito_de_compras.belongsTo(models.Cliente, { foreignKey: 'id_cliente' });
-
     }
   }
 
@@ -37,7 +29,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Productos",
+        model: "Productos", 
         key: "id"
       }
     },
@@ -45,7 +37,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Clientes",
+        model: "Clientes", 
         key: "id"
       }
     },
