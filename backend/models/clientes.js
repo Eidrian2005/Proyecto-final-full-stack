@@ -1,18 +1,16 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Clientes extends Model {
   
     static associate(models) {
       // Relación con CarritoDeCompras
-      Clientes.hasMany(models.CarritoDeCompras, {
-        foreignKey: 'id_cliente',
-        as: 'Carritos'
+      Clientes.hasMany(models.Carrito_de_compras, {
+        foreignKey: 'id_cliente'
       });
-      models.CarritoDeCompras.belongsTo(Clientes, {
-        foreignKey: 'id_cliente',
-        as: 'Cliente'
+      models.Carrito_de_compras.belongsTo(Clientes, {
+        foreignKey: 'id_cliente'
       });
 
      //relacion con historial venta
@@ -42,12 +40,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     usuario: {
       type:DataTypes.STRING,
-      unique,
+      unique:true,
       allowNull: false
     },
     correo: {
       type:DataTypes.STRING,
-      unique,
+      unique:true,
       allowNull: false
     },
     contraseña: {

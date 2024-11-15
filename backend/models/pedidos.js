@@ -1,8 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require('sequelize');
+module.exports = (sequelize) => {
   class Pedidos extends Model {
     
     static associate(models) {
@@ -19,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Clientes, { foreignKey: 'id_cliente'})
 
       // Relación con Condicion_pedido
-      this.belongsTo(models.Condicion_de_pedido, { foreignKey: 'id_condicion' })
+      this.belongsTo(models.Condicion_de_pedidos, { foreignKey: 'id_condicion' })
 
       // Relación con Informacion_de_pago 
       this.belongsTo(models.Informacion_de_pago, { foreignKey: 'id_informacion_pago'});

@@ -1,9 +1,9 @@
-const { Categorias } = require("../models"); // Asegúrate de que este nombre coincida con lo que exportas en el archivo de modelos
+const { Categoria } = require("../models");
 
 //----------------------Get------------------------//
 const get_all_Categoria = async (req, res) => {
   try {
-    const categorias = await Categorias.findAll();
+    const categorias = await Categoria.findAll();
     res.status(200).json(categorias);
   } catch (error) {
     console.error(error); // Imprimir error para depuración
@@ -13,11 +13,11 @@ const get_all_Categoria = async (req, res) => {
 //----------------------Post------------------------//
 const post_Categoria = async (req, res) => {
   try {
-    const { categoria} = req.body;
-    const categorias = await Categorias.create({
+    const { Categoria} = req.body;
+    const categorias = await Categoria.create({
     categorias
     });
-    res.status(201).json(categoria);
+    res.status(201).json(categorias);
   } catch (error) {
     res.status(500).json({ error: "Error al crear la categoria" });
   }
@@ -30,7 +30,7 @@ const put_Categoria= async (req , res) => {
    const{id}=req.params
    const  {  categoria }= req.body;
  
-   const categorias = await Categorias.findByPk(id);
+   const categorias = await Categoria.findByPk(id);
    if(!categoria) return res.status(404).json({error:'categoria no encontrada'});
  
    await categoria.update({ categorias });

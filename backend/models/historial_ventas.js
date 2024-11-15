@@ -1,18 +1,16 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const productos = require('./productos');
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Historial_ventas extends Model {
     static associate(models) {
 
       // relacion con productos
-      this.belongsTo(models.productos, { foreignKey: "id_producto" });
+      this.belongsTo(models.Productos, { foreignKey: "id_producto" });
       // relacion con clientes
-      this.belongsTo(models.clientes, { foreignKey: "id_cliente" });
+      this.belongsTo(models.Clientes, { foreignKey: "id_cliente" });
       // relacion con pedidos
-      this.belongsTo(models.pedidos, { foreignKey: "id_pedidos" })
+      this.belongsTo(models.Pedidos, { foreignKey: "id_pedidos" })
     }
   }
   Historial_ventas.init({

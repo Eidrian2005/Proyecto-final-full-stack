@@ -1,7 +1,7 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Historial_compras extends Model {
    
     static associate(models) {
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Historial_Compras',
+    modelName: 'Historial_compras',
     tableName: 'Historial_compras',
     timestamps: true
   });
