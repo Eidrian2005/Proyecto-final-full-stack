@@ -10,7 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_pedidos: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Pedidos",
+          key:"id"
+        }
       },
       fecha_compra: {
         type: Sequelize.DATE

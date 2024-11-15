@@ -10,13 +10,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_producto: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Productos",
+          key:"id"
+        }
       },
       id_cliente: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Clientes",
+          key:"id"
+        }
       },
       id_condicion: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Condicion_de_pedidos",
+          key:"id"
+        }
       },
       id_informacion_pago: {
         type: Sequelize.INTEGER
