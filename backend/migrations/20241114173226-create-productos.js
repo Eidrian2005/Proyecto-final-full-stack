@@ -10,7 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_categoria: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Categoria",
+          key:"id"
+        }
       },
       imagen: {
         type: Sequelize.BLOB

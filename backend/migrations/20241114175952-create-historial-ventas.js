@@ -10,13 +10,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_producto: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Productos",
+          key:"id"
+        }
       },
       id_cliente: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Clientes",
+          key:"id"
+        }
       },
       id_pedidos: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Pedidos",
+          key:"id"
+        }
       },
       fecha_venta: {
         type: Sequelize.DATE
