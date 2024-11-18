@@ -1,5 +1,4 @@
 const { Categoria } = require("../models");
-
 //----------------------Get------------------------//
 const get_all_Categoria = async (req, res) => {
   try {
