@@ -1,24 +1,24 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { jwtSecret, jwtExpiresIn } = require("../config");
-const { Usuarios } = require("../models");
+const { Clientes } = require("../models");
 
 const iniciarSesion = async (req, res) => {
-  const { nombre_usuario, contra_usuario } = req.body;
+  const { usuario, contraseña } = req.body;
   try {
     // Buscar el usuario por su nombre de usuario
-    const usuario = await Usuarios.findOne({ where: { nombre_usuario } });
-    if (!usuario) {
+    const user = await Clientes.findOne({ where: { usuario } });
+    if (!user) {
       return res.status(401).json({ message: "Credenciales incorrectas." });
     }
     // Aqui deberfas comparar la contrasena proporcionada con la almacenada
-    const esContrasenaValida = await bcrypt.compare(contra_usuario, usuario.contra_usuario); // Asegurate de tener bcrypt instalado
+    const esContrasenaValida = await bcrypt.compare(contraseña, user.contraseña); // Asegurate de tener bcrypt instalado
     if (!esContrasenaValida) {
       return res.status(401).json({ message: "Credenciales incorrectas." });
     }
     // Generar el token JWT
     const token = jwt.sign(
-      { id: usuario.id, nombre_usuario: usuario.nombre_usuario },
+      { id: user.id, usuario: user.usuario },
       jwtSecret,
       {
         expiresIn: jwtExpiresIn,

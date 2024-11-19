@@ -2,6 +2,7 @@ const express = require('express');
 const { sequelize } = require('./models'); // Importa la conexión a la base de datos
 const app = express();
 const PORT = 3000;
+const cors = require('cors');
 const authRoutes = require('./routes/auth_routes');
 const auth = require('./middlewares/authMiddleware');
 const carrito_Routes = require('./routes/carrito_Routes');
@@ -18,6 +19,8 @@ const productos_routes = require('./routes/productos_routes')
 const tipo_usuario_routes = require('./routes/tipo_usuario_routes')
 app.use(express.json()); // Middleware para parsear JSON
 
+app.use(cors());
+
 // Probar la conexión con la base de datos
 sequelize.authenticate()
   .then(() => console.log('Conexión a la base de datos exitosa.'))
@@ -26,12 +29,12 @@ sequelize.authenticate()
 // Usar las rutas de productos
 
 app.use('/auth', authRoutes);
-app.use('/Carrito', carrito_Routes);
-app.use('/Categoria' , categoria_Routes);
-app.use('/Cliente' , clientes_Routes);
-app.use('/Condiciones' , condiciones_Routes);
-app.use('/Historial_compras' , historial_compras_Routes);
-app.use('/Historial_ventas' , historial_ventas_Routes);
+app.use('/carrito', carrito_Routes);
+app.use('/categoria' , categoria_Routes);
+app.use('/cliente' , clientes_Routes);
+app.use('/condiciones' , condiciones_Routes);
+app.use('/historial_compras' , auth.verificarToken,historial_compras_Routes);
+app.use('/historial_ventas' , historial_ventas_Routes);
 app.use('/informacion_pago', informacion_de_pago_routes);
 app.use('/inventario', inventario_routes);
 app.use('/lista_de_deseados', lista_de_deseados_routes);
