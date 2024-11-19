@@ -1,9 +1,9 @@
-const { CarritoDeCompras, Producto, Cliente } = require("../models");
+const { Carrito_de_compras } = require("../models");
 
 //----------------------Get------------------------//
 const get_all_carritos = async (req, res) => {
   try {
-    const carritos = await CarritoDeCompras.findAll()
+    const carritos = await Carrito_de_compras.findAll()
     res.status(200).json(carritos);
   } catch (error) {
     console.error(error);
@@ -15,7 +15,7 @@ const get_all_carritos = async (req, res) => {
 const get_carrito_by_id = async (req, res) => {
   try {
     const { id } = req.params;
-    const carrito = await CarritoDeCompras.findByPk(id)
+    const carrito = await Carrito_de_compras.findByPk(id)
     if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
 
     res.status(200).json(carrito);
@@ -29,7 +29,7 @@ const get_carrito_by_id = async (req, res) => {
 const post_carrito = async (req, res) => {
   try {
     const { id_producto, id_cliente, cantidad } = req.body;
-    const nuevoCarrito = await CarritoDeCompras.create({ id_producto, id_cliente, cantidad });
+    const nuevoCarrito = await Carrito_de_compras.create({ id_producto, id_cliente, cantidad });
     res.status(201).json(nuevoCarrito);
   } catch (error) {
     console.error(error);
@@ -42,7 +42,7 @@ const put_carrito = async (req, res) => {
   try {
     const { id } = req.params;
     const { id_producto, id_cliente, cantidad } = req.body;
-    const carrito = await CarritoDeCompras.findByPk(id);
+    const carrito = await Carrito_de_compras.findByPk(id);
     if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
 
     await carrito.update({ id_producto, id_cliente, cantidad });
@@ -57,7 +57,7 @@ const put_carrito = async (req, res) => {
 const delete_carrito = async (req, res) => {
   try {
     const { id } = req.params;
-    const carrito = await CarritoDeCompras.findByPk(id);
+    const carrito = await Carrito_de_compras.findByPk(id);
     if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
 
     await carrito.destroy();
