@@ -1,9 +1,9 @@
-const { CondicionDePedidos, Pedidos } = require("../models");
+const { Condicion_de_pedidos } = require("../models");
 
 //----------------------Get------------------------//
 const get_all_condiciones = async (req, res) => {
   try {
-    const condiciones = await CondicionDePedidos.findAll();
+    const condiciones = await Condicion_de_pedidos.findAll();
     res.status(200).json(condiciones);
   } catch (error) {
     console.error(error);
@@ -15,7 +15,7 @@ const get_all_condiciones = async (req, res) => {
 const get_condicion_by_id = async (req, res) => {
   try {
     const { id } = req.params;
-    const condicion = await CondicionDePedidos.findByPk(id);
+    const condicion = await Condicion_de_pedidos.findByPk(id);
     if (!condicion) return res.status(404).json({ error: "Condición de pedido no encontrada" });
 
     res.status(200).json(condicion);
@@ -29,7 +29,7 @@ const get_condicion_by_id = async (req, res) => {
 const post_condicion = async (req, res) => {
   try {
     const { descripcion } = req.body;
-    const nuevaCondicion = await CondicionDePedidos.create({ descripcion });
+    const nuevaCondicion = await Condicion_de_pedidos.create({ descripcion });
     res.status(201).json(nuevaCondicion);
   } catch (error) {
     console.error(error);
@@ -42,7 +42,7 @@ const put_condicion = async (req, res) => {
   try {
     const { id } = req.params;
     const { descripcion } = req.body;
-    const condicion = await CondicionDePedidos.findByPk(id);
+    const condicion = await Condicion_de_pedidos.findByPk(id);
     if (!condicion) return res.status(404).json({ error: "Condición de pedido no encontrada" });
 
     await condicion.update({ descripcion });
@@ -57,7 +57,7 @@ const put_condicion = async (req, res) => {
 const delete_condicion = async (req, res) => {
   try {
     const { id } = req.params;
-    const condicion = await CondicionDePedidos.findByPk(id);
+    const condicion = await Condicion_de_pedidos.findByPk(id);
     if (!condicion) return res.status(404).json({ error: "Condición de pedido no encontrada" });
 
     await condicion.destroy();
