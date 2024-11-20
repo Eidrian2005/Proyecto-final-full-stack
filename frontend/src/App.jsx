@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Routing from './routes/routing'
 import './App.css'
 
 function App() {
@@ -6,7 +9,7 @@ function App() {
 
   return (
     <>
-      
+      <Routing />
     </>
   )
 }
