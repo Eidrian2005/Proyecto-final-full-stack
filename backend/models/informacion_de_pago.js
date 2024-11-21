@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       allowNull:false
     },
     numero_de_tarjeta: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       allowNull: false
     },
     fecha_de_vencimiento: {
