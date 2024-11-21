@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import Routing from './routes/routing'
 import './App.css'
 
