@@ -31,7 +31,11 @@ module.exports = {
         }
       },
       id_informacion_pago: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:"Informacion_de_pago",
+          key:"id"
+        }
       },
       fecha_de_pedido: {
         type: Sequelize.DATE

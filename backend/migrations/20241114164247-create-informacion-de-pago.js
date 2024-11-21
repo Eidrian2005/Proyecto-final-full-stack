@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       numero_de_tarjeta: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       fecha_de_vencimiento: {
         type: Sequelize.DATE

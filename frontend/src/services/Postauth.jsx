@@ -13,7 +13,13 @@ async function Post_auth( usuario,contraseña) {
             body: JSON.stringify(productsData)
         });
 
-        return await response.json();
+        
+
+      const dataToken = await response.json();
+
+        console.log('TOKEN:', dataToken)
+
+        return  dataToken
 
         
     } catch (error) {
