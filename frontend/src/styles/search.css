@@ -1,0 +1,101 @@
+/* General styles */
+.search-page {
+  padding: 20px;
+}
+
+/* Search bar */
+.search-page .search-bar {
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 5px 15px;
+  background-color: #f9f9f9;
+}
+
+.search-page .search-bar input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.search-page .search-bar .btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search-page .back-btn {
+  margin-right: 10px;
+}
+
+.search-page .search-btn {
+  margin-left: 10px;
+}
+
+/* Search results */
+.search-page .card.book-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 400px; /* Altura fija */
+  width: 250px; /* Menor anchura */
+  display: flex;
+  flex-direction: column;
+}
+
+.search-page .card.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-page .card-img-top {
+  height: 60%; /* Imagen ocupa 60% */
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.search-page .card-body {
+  padding: 10px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-page .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; /* Color negro para el título */
+}
+
+.search-page .card-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.search-page .btn-primary {
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-page {
+    padding: 10px;
+  }
+
+  .search-page .card.book-card {
+    height: 350px;
+    width: 200px; /* Ajusta para pantallas pequeñas */
+  }
+
+  .search-page .card-title {
+    font-size: 16px;
+  }
+
+  .search-page .card-text {
+    font-size: 12px;
+  }
+}
