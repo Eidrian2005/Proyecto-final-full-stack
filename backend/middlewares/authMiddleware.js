@@ -25,7 +25,7 @@ const verificarToken = (req, res, next) => {
 const isAdmin = async (req, res, next) => { 
   try { 
     const tipoUsuario = await Tipo_usuario.findOne({ where: { id_cliente: req.usuario.id } });
-    if (tipoUsuario && tipoUsuario.descripcion === "administrador") {
+    if (tipoUsuario && tipoUsuario.id === 2) {
       return next(); } else {
       return res.status(403).json({ error: "Acceso denegado" }); 
     }
