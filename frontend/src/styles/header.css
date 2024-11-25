@@ -1,0 +1,79 @@
+/* Estilos generales del header */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.header .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.header .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.header .nav-link {
+  text-decoration: none;
+  color: #333; /* Color negro por defecto */
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+  text-align: center;
+}
+
+.header .nav-link:hover {
+  color: #007bff; /* Azul solo en hover */
+}
+
+.header .nav-link i {
+  font-size: 16px;
+}
+
+/* Estilos específicos para el carrito */
+.header .cart {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .header .nav {
+    flex-direction: column;
+  }
+
+  .header .nav-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header .cart {
+    right: 10px;
+    top: 10px;
+    transform: none;
+  }
+}
