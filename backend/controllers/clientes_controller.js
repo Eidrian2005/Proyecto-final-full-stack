@@ -50,13 +50,13 @@ const post_cliente = async (req, res) => {
 const put_cliente = async (req, res) => {
   try {
     const { id } = req.params;
-    const { direccion, imagen, usuario, correo, contraseña } = req.body;
+    const { descripcion, direccion, imagen, usuario, correo, contraseña } = req.body;
     const cliente = await Clientes.findByPk(id);
     if (!cliente) return res.status(404).json({ error: "Cliente no encontrado" });
 
     const contraseña_cifrada = contraseña ? await bcrypt.hash(contraseña, 10) : cliente.contraseña;
 
-    await cliente.update({ direccion, imagen, usuario, correo, contraseña: contraseña_cifrada });
+    await cliente.update({ descripcion, direccion, imagen, usuario, correo, contraseña: contraseña_cifrada });
     res.status(200).json(cliente);
   } catch (error) {
     console.error(error);

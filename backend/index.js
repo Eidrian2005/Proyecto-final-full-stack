@@ -16,7 +16,6 @@ const inventario_routes = require('./routes/inventario_routes');
 const lista_de_deseados_routes = require('./routes/lista_deseados_routes');
 const pedidos_routes = require('./routes/pedidos_routes');
 const productos_routes = require('./routes/productos_routes')
-const tipo_usuario_routes = require('./routes/tipo_usuario_routes')
 app.use(express.json()); // Middleware para parsear JSON
 
 app.use(cors());
@@ -40,7 +39,6 @@ app.use('/inventario', inventario_routes);
 app.use('/lista_de_deseados', lista_de_deseados_routes);
 app.use('/pedidos', pedidos_routes);
 app.use('/productos', productos_routes);
-app.use('/tipo_usuario', tipo_usuario_routes)
 
 // Iniciar el servidor
 app.listen(PORT, () => {
