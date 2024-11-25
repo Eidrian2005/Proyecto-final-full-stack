@@ -1,6 +1,7 @@
 // middlewares/authMiddleware.js
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config");
+const {Tipo_usuario} = require("../models");
 
 // Middleware para verificar el token JWT
 const verificarToken = (req, res, next) => {
@@ -21,13 +22,17 @@ const verificarToken = (req, res, next) => {
 };
 
 //Verifica si es usuario 
-const isAdmin = (req, res, next) => {
-  if (req.user && req.user.rol === "administrador") {
-    return next();
-  } else {
-    return res.status(403).json({ error: "Acceso denegado" });
-  }
-};
+const isAdmin = async (req, res, next) => { 
+  try { 
+    const tipoUsuario = await Tipo_usuario.findOne({ where: { id_cliente: req.usuario.id } });
+    if (tipoUsuario && tipoUsuario.id === 2) {
+      return next(); } else {
+      return res.status(403).json({ error: "Acceso denegado" }); 
+    }
+   } catch (error) {
+    res.status(500).json({ error: "Error al verificar el tipo de usuario." });
+   }
+  };
 
 
 module.exports = {verificarToken,isAdmin};
