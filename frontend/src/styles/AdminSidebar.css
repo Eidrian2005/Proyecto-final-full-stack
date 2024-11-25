@@ -1,0 +1,79 @@
+/* Sidebar base styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Oculto por defecto en móviles */
+    background-color: #343a40;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.open {
+    left: 0; /* Visible cuando está abierto */
+  }
+  
+  .sidebar-title {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #f8f9fa;
+    margin-top: 20px;
+  }
+  
+  /* Botones del sidebar */
+  .btn:hover {
+    background-color: #495057 !important;
+    border-radius: 5px;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  /* Botón de toggle para móviles */
+  .toggle-btn {
+    position: fixed;
+    top: 10px; /* Ajustado más cerca del borde superior */
+    left: 15px; /* Espaciado para no tocar el borde izquierdo */
+    z-index: 1100;
+    border: none;
+    background-color: #343a40;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* Bordes más suaves */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease, top 0.3s ease;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #495057;
+    transform: scale(1.15); /* Efecto más prominente al hacer hover */
+  }
+  
+  .toggle-btn:focus {
+    outline: none;
+  }
+  
+  /* Ajuste en móviles con notch */
+  @media (max-width: 576px) {
+    .toggle-btn {
+      top: calc(env(safe-area-inset-top) + 10px); /* Ajuste dinámico para dispositivos con notch */
+      left: 10px;
+    }
+  }
+  
+  /* Estilos para pantallas medianas y grandes */
+  @media (min-width: 768px) {
+    .sidebar {
+      left: 0; /* Siempre visible */
+    }
+    .toggle-btn {
+      display: none; /* Ocultar el botón de toggle */
+    }
+  }
+  
