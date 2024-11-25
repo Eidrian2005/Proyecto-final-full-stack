@@ -18,12 +18,12 @@ const iniciarSesion = async (req, res) => {
     }
     // Generar el token JWT
     const token = jwt.sign(
-      { id: user.id, usuario: user.usuario },
+      { id: user.id, usuario: user.usuario, descripcion: user.descripcion },
       jwtSecret,
       {
         expiresIn: jwtExpiresIn,
       }
-    );
+    );;
     res.status(200).json({ token }); // Devolver el token al cliente
   } catch (error) {
     console.error(error);

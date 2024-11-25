@@ -30,6 +30,13 @@ module.exports = (sequelize) => {
   
 
   Clientes.init({
+
+    descripcion: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "usuario" 
+    },
+
     direccion: {
       type:DataTypes.STRING, 
       allowNull: false

@@ -19,7 +19,7 @@
               </a>
             </li>
             <li className="nav-item">
-              <a href="#search" onClick={handlesearch} className="nav-link">
+              <a onClick={handlesearch} className="nav-link">
                 Search
               </a>
             </li>
