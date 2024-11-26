@@ -1,7 +1,7 @@
 import React from 'react'
-import Admin from '../../components/admin'
+import BodyAdmin from '../../components/BodyAdmin'
 export default function AdminPage() {
   return (
-    <Admin/>
+    <BodyAdmin/>
   )
 }
