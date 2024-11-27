@@ -12,6 +12,7 @@ function App() {
   return (
     <>
       <Routing />
+      <ToastContainer position='top-center'/>  
     </>
   )
 }

@@ -29,12 +29,12 @@ const get_producto_by_id = async (req, res) => {
 //----------------------Post------------------------//
 const post_producto = async (req, res) => {
   try {
-    const { id_categoria, imagen, nombre_producto, descipcion, unidades, precio } = req.body;
+    const { id_categoria, imagen, nombre_producto, descripcion, unidades, precio } = req.body;
     const nuevoProducto = await Productos.create({
       id_categoria,
       imagen,
       nombre_producto,
-      descipcion,
+      descripcion,
       unidades,
       precio
     });
