@@ -1,0 +1,13 @@
+.card-img-container {
+    width: 235px;
+    height: 235px; 
+    overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+#imagen {
+    width: 100%;
+    object-fit: cover;
+}

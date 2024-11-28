@@ -12,10 +12,8 @@ const get_all_Categoria = async (req, res) => {
 //----------------------Post------------------------//
 const post_Categoria = async (req, res) => {
   try {
-    const { Categoria} = req.body;
-    const categorias = await Categoria.create({
-    categorias
-    });
+    const { categoria } = req.body;
+    const categorias = await Categoria.create({ categoria });
     res.status(201).json(categorias);
   } catch (error) {
     res.status(500).json({ error: "Error al crear la categoria" });

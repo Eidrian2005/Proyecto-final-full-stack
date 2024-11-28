@@ -22,7 +22,7 @@ module.exports = {
       nombre_producto: {
         type: Sequelize.STRING
       },
-      descipcion: {
+      descripcion: {
         type: Sequelize.STRING
       },
       unidades: {
