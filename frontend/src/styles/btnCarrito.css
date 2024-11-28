@@ -1,0 +1,20 @@
+/* Estilos básicos para el botón */
+.btn-agregar {
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-agregar:hover {
+    background-color: #45a049; /* Color verde más oscuro cuando el cursor pasa encima */
+  }
+  
+  .btn-agregar:focus {
+    outline: none; /* Elimina el borde de enfoque */
+  }
+  

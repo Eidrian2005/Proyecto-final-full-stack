@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Post_auth } from '../services/Postauth';
 import { toast } from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom'
-
+import AddToCartButton from './carrito';
 
 
 
@@ -91,7 +91,7 @@ return (
 
                 <br/>
                 <p>¿No tienes cuenta? <Link to="/Register">Crea una</Link></p>
-
+                <AddToCartButton/>
             </form>
 
         </div>  

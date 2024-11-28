@@ -1,0 +1,74 @@
+/* Estilos para el componente Contactanos */
+
+.contact-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .contact-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .contact-header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .contact-header p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+  }
+  
+  .contact-form-container {
+    padding: 20px;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .contact-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-submit:hover {
+    background-color: #0056b3;
+  }
+  

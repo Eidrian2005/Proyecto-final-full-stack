@@ -53,12 +53,12 @@
 }
 
 /* Estilos específicos para el carrito */
-.header .cart {
+/* .header .cart {
   position: absolute;
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 /* Responsividad para móviles */
 @media (max-width: 768px) {

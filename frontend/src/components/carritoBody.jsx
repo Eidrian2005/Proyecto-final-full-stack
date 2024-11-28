@@ -2,10 +2,9 @@ import React from 'react';
 import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
 import FormLogin from './FormLogin';
-import ShoppingCart from './carrito';
-import Tarjeta from './tarjetaProducto';
+import FormContactanos from './Formcontactanos';
 
-const Homebody = () => {
+const Carritobody = () => {
   return (
     <div className="home-container">
       {/* Sección de encabezado */}
@@ -17,11 +16,12 @@ const Homebody = () => {
       </div>
 
       {/* Pie de página */}
-      <FormLogin />
-      <Tarjeta/>
+      <FormContactanos/>
+      
       <div className="footer-section">
       
         <div className="pagination">
+        {/* <FormLogin /> */}
        
           <button className="pagination-button">1</button>
         </div>
@@ -30,4 +30,4 @@ const Homebody = () => {
   );
 };
 
-export default Homebody;
+export default Carritobody;
