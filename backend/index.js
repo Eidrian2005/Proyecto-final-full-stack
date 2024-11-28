@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const { sequelize } = require('./models'); // Importa la conexión a la base de datos
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT
 const cors = require('cors');
 const authRoutes = require('./routes/auth_routes');
 const auth = require('./middlewares/authMiddleware');
@@ -17,7 +18,6 @@ const lista_de_deseados_routes = require('./routes/lista_deseados_routes');
 const pedidos_routes = require('./routes/pedidos_routes');
 const productos_routes = require('./routes/productos_routes')
 app.use(express.json()); // Middleware para parsear JSON
-
 app.use(cors());
 
 // Probar la conexión con la base de datos

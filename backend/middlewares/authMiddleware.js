@@ -1,7 +1,7 @@
 // middlewares/authMiddleware.js
 const jwt = require("jsonwebtoken");
-const { jwtSecret } = require("../config");
-const {Clientes} = require("../models");
+// const { jwtSecret } = require("../config");
+
 
 // Middleware para verificar el token JWT
 const verificarToken = (req, res, next) => {
@@ -13,7 +13,7 @@ const verificarToken = (req, res, next) => {
       .json({ error: "Acceso denegado. Token no proporcionado." });
   }
   try {
-    const decoded = jwt.verify(token, jwtSecret);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.usuario = decoded; // Guardar la información del usuario en la request
     next();
   } catch (error) {

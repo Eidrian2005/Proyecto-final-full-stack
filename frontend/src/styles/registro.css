@@ -1,0 +1,128 @@
+/* Contenedor principal centrado */
+.form-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff; /* Fondo blanco */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estructura general: logo a la izquierda, formulario a la derecha */
+  .form-register-wrapper {
+    display: flex;
+    width: 900px; /* Ajusta el ancho total */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Sección izquierda: logo */
+  /* Sección izquierda: logo */
+.form-register-logo-section {
+  flex: 1; /* Ocupa la mitad izquierda */
+  background-color: #f4f4f4; /* Fondo gris claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Contenedor circular para la imagen */
+.form-register-logo-container {
+  width: 200px; /* Ajusta el tamaño del círculo */
+  height: 200px;
+  background-color: #ffffff; /* Fondo blanco dentro del círculo */
+  border-radius: 50%; /* Hace el contenedor circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 2px solid #ddd; /* Borde opcional */
+}
+
+.form-register-logo {
+  max-width: 90%; /* Limita el tamaño de la imagen dentro del círculo */
+  max-height: 90%;
+  border-radius: 50%; /* Hace que la imagen también sea circular */
+  object-fit: cover; /* Ajusta la imagen dentro del espacio */
+}
+  
+  /* Sección derecha: formulario */
+  .form-register-form-section {
+    flex: 1; /* Ocupa la mitad derecha */
+    padding: 30px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Título del formulario */
+  .form-register-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estructura de los inputs */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #f57c00;
+  }
+  
+  /* Botón de envío */
+  .form-register-button {
+    background-color: #f57c00;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .form-register-button:hover {
+    background-color: #e66a00;
+  }
+  
+  /* Enlace para iniciar sesión */
+  .form-register-login {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .form-register-login a {
+    color: #f57c00;
+    text-decoration: none;
+  }
+  
+  .form-register-login a:hover {
+    text-decoration: underline;
+  }
+  
