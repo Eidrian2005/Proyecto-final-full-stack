@@ -16,10 +16,9 @@ async function Post_auth( usuario,contraseña) {
         
 
       const dataToken = await response.json();
-
-        console.log('TOKEN:', dataToken)
-
-        return  dataToken
+      localStorage.setItem('token', dataToken.token);
+      console.log('Token', dataToken)
+      return  dataToken;
 
         
     } catch (error) {

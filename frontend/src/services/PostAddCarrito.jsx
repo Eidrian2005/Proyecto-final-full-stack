@@ -1,12 +1,6 @@
-async function Post_carrito(id_producto, id_cliente, cantidad) {
+async function Post_carrito(carritoData) {
     try {
-        const carritoData = { 
-            id_producto,
-            id_cliente,
-            cantidad
-        };
-
-        const response = await fetch("http://localhost:3000/api/carrito", {
+            const response = await fetch("http://localhost:3000/carrito", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
