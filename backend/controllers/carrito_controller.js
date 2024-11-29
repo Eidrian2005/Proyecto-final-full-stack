@@ -29,13 +29,38 @@ const get_carrito_by_id = async (req, res) => {
 const post_carrito = async (req, res) => {
   try {
     const { id_producto, id_cliente, cantidad } = req.body;
-    const nuevoCarrito = await Carrito_de_compras.create({ id_producto, id_cliente, cantidad });
-    res.status(201).json(nuevoCarrito);
+
+    // Buscar si ya existe un registro en el carrito con el mismo producto y cliente
+    const carritoExistente = await Carrito_de_compras.findOne({
+      where: { id_producto, id_cliente },
+    });
+
+    if (carritoExistente) {
+      // Si ya existe, actualizar la cantidad
+      carritoExistente.cantidad += cantidad; // Incrementar la cantidad
+      await carritoExistente.save(); // Guardar los cambios
+      return res.status(200).json({
+        message: "Cantidad actualizada correctamente",
+        carrito: carritoExistente,
+      });
+    } else {
+      // Si no existe, crear un nuevo registro
+      const nuevoCarrito = await Carrito_de_compras.create({
+        id_producto,
+        id_cliente,
+        cantidad,
+      });
+      return res.status(201).json({
+        message: "Producto añadido al carrito",
+        carrito: nuevoCarrito,
+      });
+    }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error al crear el carrito de compras." });
+    res.status(500).json({ error: "Error al procesar la solicitud." });
   }
 };
+
 
 //----------------------Put------------------------//
 const put_carrito = async (req, res) => {

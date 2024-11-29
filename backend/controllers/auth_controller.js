@@ -23,10 +23,10 @@ const iniciarSesion = async (req, res) => {
         expiresIn: process.env.JWT_EXPIRES_IN,
       }
     );;
-    res.status(200).json({ token }); // Devolver el token al cliente
+    return res.status(200).json({ token }); // Devolver el token al cliente
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al iniciar sesion." });
+    return res.status(500).json({ message: "Error al iniciar sesion." });
   }
 };
 module.exports = {

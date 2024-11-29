@@ -4,6 +4,7 @@ import Header from './header';
 import FormLogin from './FormLogin';
 import ShoppingCart from './carrito';
 import Tarjeta from './tarjetaProducto';
+import CardsCarrito from './cardsCarrito';
 
 const Homebody = () => {
   return (
@@ -19,6 +20,7 @@ const Homebody = () => {
       {/* Pie de página */}
       <FormLogin />
       <Tarjeta/>
+      <CardsCarrito/>
       <div className="footer-section">
       
         <div className="pagination">

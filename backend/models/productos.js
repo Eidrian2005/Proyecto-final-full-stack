@@ -9,14 +9,14 @@ module.exports = (sequelize) => {
       //relacion con inventario
       this.hasOne(models.Inventario, {foreignKey: 'id_producto'})
 
-          //relacion con lista de deseos
+      //relacion con lista de deseos
       this.hasMany(models.Lista_de_deseos, { foreignKey: 'id_producto' });
 
       // Relación con Pedidos
       this.hasMany(models.Pedidos, { foreignKey: 'id_producto'});
 
-        // Relación con Categoria
-        this.belongsTo(models.Categoria, { foreignKey: 'id_categoria'});
+      // Relación con Categoria
+      this.belongsTo(models.Categoria, { foreignKey: 'id_categoria'});
 
     }
   }
