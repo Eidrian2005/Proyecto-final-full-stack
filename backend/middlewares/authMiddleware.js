@@ -11,7 +11,7 @@ const verificarToken = (req, res, next) => {
       .json({ error: "Acceso denegado. Token no proporcionado." });
   }
   try {
-    const decoded = jwt.verify(token, jwtSecret);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.usuario = decoded; // Guardar la información del usuario en la request
     next();
   } catch (error) {

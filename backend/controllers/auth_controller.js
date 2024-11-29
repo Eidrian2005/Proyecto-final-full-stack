@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { jwtSecret, jwtExpiresIn } = require("../config");
 const { Clientes } = require("../models");
 
 const iniciarSesion = async (req, res) => {
@@ -19,9 +18,9 @@ const iniciarSesion = async (req, res) => {
     // Generar el token JWT
     const token = jwt.sign(
       { id: user.id, usuario: user.usuario, descripcion: user.descripcion },
-      jwtSecret,
+      process.env.JWT_SECRET,
       {
-        expiresIn: jwtExpiresIn,
+        expiresIn: process.env.JWT_EXPIRES_IN,
       }
     );;
     return res.status(200).json({ token }); // Devolver el token al cliente

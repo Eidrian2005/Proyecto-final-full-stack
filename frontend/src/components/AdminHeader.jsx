@@ -1,9 +1,14 @@
 import "../styles/AdminHeader.css";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope as faEnvelopeRegular } from "@fortawesome/free-regular-svg-icons";
 
 const AdminHeader = ({ onSearch, onGoHome }) => {
+
+  const [notificationCount, setNotificationCount] = useState(0);
+
+
   const handleSearch = (event) => {
     if (event.key === "Enter") {
       onSearch(event.target.value);
@@ -21,6 +26,15 @@ const AdminHeader = ({ onSearch, onGoHome }) => {
           placeholder="Buscar..."
           onKeyDown={handleSearch}
         />
+      </div>
+      <div className="notification-container">
+        <FontAwesomeIcon
+          icon={notificationCount > 0 ? faEnvelope : faEnvelopeRegular}
+          className="notification-icon"
+        />
+        {notificationCount > 0 && (
+          <span className="notification-badge">{notificationCount}</span>
+        )}
       </div>
       <button className="btn btn-primary home-btn" onClick={onGoHome}>
         <FontAwesomeIcon icon={faHome} className="me-2" />
