@@ -1,37 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/search.css";
+import { Getproductos } from "../services/GetProductos";
 
 const Search = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredBooks, setFilteredBooks] = useState([]);
-  const [searchPerformed, setSearchPerformed] = useState(false); // Nuevo estado
+  const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const books = [
-    { id: 1, title: "Book 1", description: "This is the description of Book 1" },
-    { id: 2, title: "Book 2", description: "This is the description of Book 2" },
-    { id: 3, title: "Book 3", description: "This is the description of Book 3" },
-  ];
+  useEffect(() => {
+    Getproductos()
+      .then((data) => {
+        setRecords(data);
+        setFilteredRecords(data); // Mostrar todos inicialmente
+      })
+      .catch((error) => {
+        console.error("Error fetching products", error);
+      });
+  }, []);
 
   const handleSearch = () => {
-    const results = books.filter((book) =>
-      book.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredBooks(results);
-    setSearchPerformed(true); // Indica que se ha realizado una búsqueda
-  };
+    if (!searchTerm.trim()) {
+      setFilteredRecords(records); // Si no hay búsqueda, mostrar todos
+      return;
+    }
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    navigate("/");
+    const filtered = records.filter(
+      (product) =>
+        product.nombre_producto &&
+        product.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredRecords(filtered);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
+  };
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate("/");
   };
 
   return (
@@ -46,8 +58,8 @@ const Search = () => {
               type="text"
               className="form-control"
               placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
             />
             <button className="btn search-btn" onClick={handleSearch}>
@@ -60,18 +72,18 @@ const Search = () => {
         <div className="col-12">
           <h4 className="text-start">Search Results</h4>
           <div className="row g-1">
-            {filteredBooks.length > 0 ? (
-              filteredBooks.map((book) => (
-                <div key={book.id} className="col-6 col-md-4 col-lg-3">
+            {filteredRecords.length > 0 ? (
+              filteredRecords.map((d) => (
+                <div key={d.id} className="col-6 col-md-4 col-lg-3">
                   <div className="card book-card">
                     <img
-                      src="https://via.placeholder.com/200x150"
-                      alt={book.title}
+                      src={d.imagen || "https://via.placeholder.com/200x150"}
+                      alt={d.nombre_producto}
                       className="card-img-top"
                     />
                     <div className="card-body">
-                      <h5 className="card-title">{book.title}</h5>
-                      <p className="card-text">{book.description}</p>
+                      <h5 className="card-title">{d.nombre_producto}</h5>
+                      <p className="card-text">{d.descripcion}</p>
                       <button className="btn btn-primary btn-sm">
                         View Details
                       </button>
@@ -80,9 +92,7 @@ const Search = () => {
                 </div>
               ))
             ) : (
-              searchPerformed && ( // Solo muestra el mensaje si ya se realizó una búsqueda
-                <p className="text-center">No books found.</p>
-              )
+              <p className="text-center">No products found.</p>
             )}
           </div>
         </div>
