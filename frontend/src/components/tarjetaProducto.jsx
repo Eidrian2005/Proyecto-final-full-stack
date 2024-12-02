@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import AddToCartButton from './carrito';
+import AddToListButton from './addListaDeseo';
 import { GetProducto } from '../services/GetProducto';
 
 function Tarjeta() { 
@@ -40,7 +41,8 @@ function Tarjeta() {
                   <div>
                     <p>Especificaciones:</p>
                     <Button variant="primary">Contáctanos</Button>
-                    <AddToCartButton producto={producto}/>
+                    {/* <AddToCartButton producto={producto}/> */}
+                    <AddToListButton producto={producto}/>
                   </div>
                 </Card.Body>
               </Card>

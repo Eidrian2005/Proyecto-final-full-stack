@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { Lista_de_deseos } = require("../models");
 
 //----------------------Get------------------------//
@@ -30,17 +31,38 @@ const get_lista_de_deseos_by_id = async (req, res) => {
 const post_lista_de_deseos = async (req, res) => {
   try {
     const { id_productos, id_cliente, fecha_agregado } = req.body;
+
+    // Verificar si ya existe un registro en la lista de deseos con el mismo producto y cliente
+    const listaDesosExistente = await Lista_de_deseos.findOne({
+      where: { id_productos, id_cliente },
+    });
+
+    if (listaDesosExistente) {
+      return res.status(200).json({
+        message: "Ya existe en la lista de deseos",
+        deseo: listaDesosExistente,
+      });
+    }
+
+    // Crear un nuevo registro en la lista de deseos
     const nuevoItem = await Lista_de_deseos.create({
       id_productos,
       id_cliente,
       fecha_agregado,
     });
-    res.status(201).json(nuevoItem);
+
+    res.status(201).json({
+      message: "Elemento agregado a la lista de deseos",
+      deseo: nuevoItem,
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error al agregar un elemento a la lista de deseos." });
+    res
+      .status(500)
+      .json({ error: "Error al agregar un elemento a la lista de deseos." });
   }
 };
+
 
 //----------------------Put------------------------//
 const put_lista_de_deseos = async (req, res) => {

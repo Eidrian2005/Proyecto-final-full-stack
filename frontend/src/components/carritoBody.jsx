@@ -3,8 +3,9 @@ import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
 import FormLogin from './FormLogin';
 import FormContactanos from './Formcontactanos';
+import CardsCarrito from './cardsCarrito';
 
-const Carritobody = () => {
+const CarritoBody = () => {
   return (
     <div className="home-container">
       {/* Sección de encabezado */}
@@ -16,7 +17,7 @@ const Carritobody = () => {
       </div>
 
       {/* Pie de página */}
-      <FormContactanos/>
+      <CardsCarrito/>
       
       <div className="footer-section">
       
@@ -30,4 +31,4 @@ const Carritobody = () => {
   );
 };
 
-export default Carritobody;
+export default CarritoBody;
