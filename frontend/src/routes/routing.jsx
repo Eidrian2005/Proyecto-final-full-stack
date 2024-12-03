@@ -8,6 +8,8 @@ import Search from '../components/search';
 import AdminPage from '../pages/admin/adminPage';
 import Contactanos from '../pages/contactanos';
 import Sobre_nosotros from '../pages/sobre_nosotros';
+import CarritoPage from '../pages/carritoPage';
+
 const Routing = () => {
 
 return (
@@ -21,6 +23,7 @@ return (
         <Route path="/Login" element={<Login />} />
         <Route path="/Tarjeta_de_credito" element={<Tarjeta_de_credito />} />
         <Route path='/Contactanos' element={<Contactanos/>}/>
+        <Route path='/carrito' element={<CarritoPage/>}/>
     </Routes>
     </Router>
 );
