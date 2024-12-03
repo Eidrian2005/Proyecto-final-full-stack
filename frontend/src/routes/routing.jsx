@@ -7,6 +7,7 @@ import Home from '../pages/home'
 import Search from '../components/search';
 import AdminPage from '../pages/admin/adminPage';
 import Contactanos from '../pages/contactanos';
+import Sobre_nosotros from '../pages/sobre_nosotros';
 import CarritoPage from '../pages/carritoPage';
 
 const Routing = () => {
@@ -15,6 +16,7 @@ return (
     <Router>
     <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/SobreNosotros' element={<Sobre_nosotros/>} />
         <Route path='/AdminTask' element={<AdminPage/>}/>
         <Route path='/search' element={<Search/>} />
         <Route path="/Register" element={<Register />} />
