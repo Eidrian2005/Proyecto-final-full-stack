@@ -6,9 +6,6 @@ module.exports = (sequelize) => {
       //relacion con historial ventas
       this.hasMany(models.Historial_ventas, {foreignKey: 'id_producto'})
 
-      //relacion con inventario
-      this.hasOne(models.Inventario, {foreignKey: 'id_producto'})
-
       //relacion con lista de deseos
       this.hasMany(models.Lista_de_deseos, { foreignKey: 'id_producto' });
 
