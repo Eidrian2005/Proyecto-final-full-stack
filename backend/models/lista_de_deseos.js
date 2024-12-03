@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
       //relacion con producto
       this.belongsTo(models.Productos,{foreignKey: 'id_productos'})
       //relacion con clientes
-      this.belongsTo(models.Clientes,{foreignKey: 'id_clientes'})
+      this.belongsTo(models.Clientes,{foreignKey: 'id_cliente'})
     }
   }
   Lista_de_deseos.init({
