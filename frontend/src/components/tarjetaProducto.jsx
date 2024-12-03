@@ -41,8 +41,8 @@ function Tarjeta() {
                   <div>
                     <p>Especificaciones:</p>
                     <Button variant="primary">Contáctanos</Button>
-                    {/* <AddToCartButton producto={producto}/> */}
-                    <AddToListButton producto={producto}/>
+                    <AddToCartButton producto={producto}/>
+                    {/* <AddToListButton producto={producto}/> */}
                   </div>
                 </Card.Body>
               </Card>

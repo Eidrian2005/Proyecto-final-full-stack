@@ -1,6 +1,7 @@
 
 const { Lista_de_deseos } = require("../models");
 
+
 //----------------------Get------------------------//
 const get_all_lista_de_deseos = async (req, res) => {
   try {
@@ -30,24 +31,23 @@ const get_lista_de_deseos_by_id = async (req, res) => {
 //----------------------Post------------------------//
 const post_lista_de_deseos = async (req, res) => {
   try {
-    const { id_productos, id_cliente, fecha_agregado } = req.body;
+    const { id_producto, id_cliente, fecha_agregado } = req.body;
 
     console.log('Req Body', req.body);
     
-
-    // // Verificar si ya existe un registro en la lista de deseos con el mismo producto y cliente
+    // Verificar si ya existe un registro en la lista de deseos con el mismo producto y cliente
     const listaDeseosExistente = await Lista_de_deseos.findOne({
-      where: { id_productos, id_cliente }
+      where: { id_producto, id_cliente } // Aquí se pasa un objeto con las condiciones
     });
 
-    console.log("Lista de deseos existente",listaDeseosExistente)
+    console.log("Lista de deseos existente", listaDeseosExistente);
 
     if (listaDeseosExistente) {
-      alert('Ya existe')
-    }else{
-    // Crear un nuevo registro en la lista de deseos
+      return res.status(409).json({ error: 'Ya existe un elemento en la lista de deseos con el mismo producto y cliente.' });
+    } else {
+      // Crear un nuevo registro en la lista de deseos
       const nuevoItem = await Lista_de_deseos.create({
-        id_productos,
+        id_producto,
         id_cliente,
         fecha_agregado,
       });
@@ -59,10 +59,9 @@ const post_lista_de_deseos = async (req, res) => {
     }    
   } catch (error) {
     console.error(error);
-    res .status(500).json({ error: "Error al agregar un elemento a la lista de deseos." });
+    res.status(500).json({ error: "Error al agregar un elemento a la lista de deseos." });
   }
 };
-
 
 //----------------------Put------------------------//
 const put_lista_de_deseos = async (req, res) => {
