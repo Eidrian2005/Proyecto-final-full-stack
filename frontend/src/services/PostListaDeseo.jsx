@@ -7,7 +7,6 @@ async function PostListaDeDeseos(listaData) {
             },
             body: JSON.stringify(listaData)
         });
-
         return await response.json();
 
     } catch (error) {
@@ -16,4 +15,4 @@ async function PostListaDeDeseos(listaData) {
     }
 }
 
-export { PostListaDeDeseos };
+export default PostListaDeDeseos ;

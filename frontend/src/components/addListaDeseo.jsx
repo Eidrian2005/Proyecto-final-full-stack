@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/btnCarrito.css';
 import getClienteId from '../services/obtenerClientesxToken';
-import { PostListaDeDeseos } from '../services/PostListaDeseo';
+import  PostListaDeDeseos  from '../services/PostListaDeseo';
 
 const AddToListButton = ({ producto }) => {
   const [loading, setLoading] = useState(false);
@@ -19,11 +19,12 @@ const AddToListButton = ({ producto }) => {
     try {
       const idCliente = getClienteId();
       console.log("ID Cliente:", idCliente);
-
+      console.log("ID Producto:", producto);
+      
       const listaData = {
-        id_producto: producto.id,
+        id_productos: producto.id,
         id_cliente: idCliente,
-        // fecha_agregado: new Date() new Date().toISOString()
+        fecha_agregado: "2024-12-03"
       };
 
       const response = await PostListaDeDeseos(listaData);
