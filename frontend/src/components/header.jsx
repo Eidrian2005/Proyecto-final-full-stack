@@ -24,9 +24,9 @@
               </a>
             </li>
             <li className="nav-item">
-              <a href="#about-us" className="nav-link">
+              <Link as={Link} to="/SobreNosotros" className="nav-link">
                 About Us
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a href="#news" className="nav-link">

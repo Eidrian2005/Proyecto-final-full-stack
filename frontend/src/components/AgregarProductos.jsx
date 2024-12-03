@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
+import { ProductContext } from './ProductContext';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +12,7 @@ import ModalCategoria from './AgregarCategoria';
 
 
 function ModalProducto() {
-
+  const { loadProducts } = useContext(ProductContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -46,6 +47,7 @@ function ModalProducto() {
  
 
   const agregarProducto = async () => {
+    //validacion para avisar de campos sin llenar
     if ( !nombre_producto || !unidades|| !descripcion || !precio || !categoriaSeleccionada) {
       toast.warning('Por favor llenar todos los campos', { autoClose: 1000 });
       return;
@@ -62,6 +64,7 @@ function ModalProducto() {
       );
       toast.success('Producto agregado exitosamente', { autoClose: 1000 });
       handleClose();
+      loadProducts()
     } catch (error) {
       toast.error('Error al agregar el producto', { autoClose: 1000 });
       console.error(error);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Getproductos } from "../services/GetProductos";
@@ -6,27 +6,21 @@ import { deleteproductos } from "../services/DeleteProducts";
 import { toast } from "react-toastify";
 import "../styles/ShowProducts.css";
 import ModalEditar from "./ModalEditar";
+import { ProductContext } from "./ProductContext";
+
+
+
 export default function ShowProducts() {
-  const [productos, setProductos] = useState([]);
+  const { productos, loadProducts } = useContext(ProductContext);
 
   // Función para cargar los productos desde la API
-  const loadProducts = useCallback(() => {
-    const fetchProductos = async () => {
-      try {
-        const response = await Getproductos();
-        setProductos(response);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        toast.error("Error al cargar los productos");
-      }
-    };
-    fetchProductos();
-  }, []);
 
-  // Efecto para cargar los productos al montar el componente
   useEffect(() => {
     loadProducts();
   }, [loadProducts]);
+
+
+  // Efecto para cargar los productos al montar el componente
 
   async function eliminarProducto(id) {
     await deleteproductos(id)
@@ -35,7 +29,7 @@ export default function ShowProducts() {
       autoClose: 1000
   })
   } 
-  
+
   return (
     <div className="container mt-4">
       <Row className="g-4">
