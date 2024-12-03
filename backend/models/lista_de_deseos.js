@@ -4,13 +4,13 @@ module.exports = (sequelize) => {
   class Lista_de_deseos extends Model {
     static associate(models) {
       //relacion con producto
-      this.belongsTo(models.Productos,{foreignKey: 'id_productos'})
+      this.belongsTo(models.Productos,{foreignKey: 'id_producto'})
       //relacion con clientes
       this.belongsTo(models.Clientes,{foreignKey: 'id_cliente'})
     }
   }
   Lista_de_deseos.init({
-    id_productos:{
+    id_producto:{
       type:DataTypes.INTEGER,
       references:{
         model: 'Productos',

@@ -5,6 +5,7 @@ import FormLogin from './FormLogin';
 import ShoppingCart from './carrito';
 import Tarjeta from './tarjetaProducto';
 import CardsCarrito from './cardsCarrito';
+import FormRegister from './FormRegistro';
 
 const Homebody = () => {
   return (
@@ -18,6 +19,7 @@ const Homebody = () => {
       </div>
 
       {/* Pie de página */}
+      <FormRegister/>
       <FormLogin />
       <Tarjeta/>
       <CardsCarrito/>
