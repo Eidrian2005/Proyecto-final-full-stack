@@ -57,37 +57,37 @@
     margin-top: 15px;
   }
   
-  .btn {
+  .btn12 {
     margin: 5px;
     padding: 10px 15px;
     font-size: 0.9rem;
     border-radius: 5px;
   }
   
-  .btn:first-child {
-    background-color: #007bff; /* Azul Bootstrap */
+  /* .btn12:first-child {
+    background-color: #007bff; 
     border: none;
-  }
+  } */
   
- .btn:first-child:hover {
+ /* .btn:first-child:hover {
     background-color: #0056b3;
-  }
+  } */
   
-  .btn:nth-child(2) {
-    background-color: #28a745; /* Verde */
+  /* .btn:nth-child(2) {
+    background-color: #28a745; 
     border: none;
-  }
+  } */
   
   .btn:nth-child(2):hover {
     background-color: #1c7c31;
   }
   
-  .btn:nth-child(3) {
-    background-color: #ffc107; /* Amarillo */
+  /* .btn:nth-child(3) {
+    background-color: #ffc107; 
     border: none;
   }
   
   .btn:nth-child(3):hover {
     background-color: #e0a800;
-  }
+  } */
   

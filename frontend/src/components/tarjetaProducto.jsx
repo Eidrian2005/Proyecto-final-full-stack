@@ -41,7 +41,7 @@ function Tarjeta() {
                   <Card.Text className='Ctext'>Tamaño: {producto.descripcion}</Card.Text>
                   <div>
                     <p>Especificaciones:</p>
-                    <Button className='btn' variant="primary">Contáctanos</Button>
+                    <Button className='btn12' variant="primary">Contáctanos</Button>
                     <AddToCartButton producto={producto}/>
                     <AddToListButton producto={producto}/>
                   </div>

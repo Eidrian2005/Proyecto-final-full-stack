@@ -22,33 +22,33 @@ export default function ShowProducts() {
   }
 
   return (
-    <div className="show-products-container">
-      <Row className="product-row">
+    <div className="show-productos-container">
+      <Row className="producto-row">
         {productos.map((producto) => (
           <Col key={producto.id} xs={12} sm={6} md={4} lg={3}>
-            <Card className="product-card-custom">
-              <div className="product-image-container">
+            <Card className="producto-card-custom">
+              <div className="producto-image-container">
                 <Card.Img
                   variant="top"
                   src={producto.imagen || "placeholder.jpg"}
                   alt={producto.nombre}
                 />
               </div>
-              <Card.Body className="product-body">
-                <Card.Title className="product-title">
+              <Card.Body className="producto-body">
+                <Card.Title className="producto-title">
                   {producto.nombre_producto}
                 </Card.Title>
-                <Card.Text className="product-units">
+                <Card.Text className="producto-units">
                   <strong>Unidades disponibles:</strong> {producto.unidades}
                 </Card.Text>
-                <Card.Text className="product-price">
+                <Card.Text className="producto-price">
                   <strong>Precio:</strong> ₡{producto.precio.toLocaleString()}
                 </Card.Text>
-                <div className="product-action-buttons">
+                <div className="producto-action-buttons">
                   <ModalEditar producto={producto} />
                   <Button
                     variant="danger"
-                    className="product-delete-button"
+                    className="producto-delete-button"
                     onClick={() => eliminarProducto(producto.id)}
                   >
                     <FaTrash />

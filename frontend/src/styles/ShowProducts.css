@@ -1,45 +1,50 @@
 /* Contenedor Principal */
-.show-products-container {
-  margin-top: 20px;
+.show-productos-container {
+  margin-top: 50px;
+  margin-left: 50px;
+  
 }
 
 /* Filas de Productos */
-.product-row {
+.producto-row {
   gap: 16px;
+  /* border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s; */
 }
 
 /* Tarjetas */
-.product-card-custom {
+.producto-card-custom {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.product-card-custom:hover {
+.producto-card-custom:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagen */
-.product-image-container {
+.producto-image-container {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
 }
 
-.product-image-container img {
+.producto-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /* Cuerpo de la tarjeta */
-.product-body {
+.producto-body {
   text-align: center;
 }
 
 /* Títulos */
-.product-title {
+.producto-title {
   font-size: 1rem;
   font-weight: bold;
   color: #d4af37;
@@ -49,47 +54,56 @@
   text-overflow: ellipsis;
 }
 
-.product-units {
+.producto-units {
   font-size: 0.9rem;
   color: #6c757d;
 }
 
-.product-price {
+.producto-price {
   font-size: 1rem;
   font-weight: bold;
   color: #212529;
 }
 
 /* Botones de acción */
-.product-action-buttons {
+.producto-action-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  margin-left: 20px;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+ 
 }
 
-.product-delete-button {
+.producto-delete-button {
   background-color: #dc3545;
   border: none;
   color: #fff;
-  transition: transform 0.3s;
+  margin-left: 10px;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.product-delete-button:hover {
+.producto-delete-button:hover {
   transform: scale(1.1);
   background-color: #b02a37;
 }
 
 /* Responsivo */
 @media (max-width: 576px) {
-  .product-title {
+  .producto-title {
     font-size: 0.9rem;
   }
 
-  .product-price {
+  .producto-price {
     font-size: 1rem;
   }
 
-  .product-units {
+  .producto-units {
     font-size: 0.8rem;
   }
 }
