@@ -19,8 +19,8 @@ const Homebody = () => {
       </div>
 
       {/* Pie de página */}
-      <FormRegister/>
-      <FormLogin />
+     
+     
       <Tarjeta/>
       <CardsCarrito/>
       <div className="footer-section">
