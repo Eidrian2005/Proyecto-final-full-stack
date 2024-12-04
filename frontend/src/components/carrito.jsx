@@ -44,7 +44,7 @@ const AddToCartButton = ({ producto }) => {
       onClick={agregarCarrito}
       disabled={loading}
     >
-      {loading ? 'Agregando...' : 'Agregar'}
+      {loading ? 'Agregando...' : 'AgregarC'}
     </button>
   );
 };

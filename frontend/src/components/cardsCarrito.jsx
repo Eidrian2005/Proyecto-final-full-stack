@@ -43,7 +43,7 @@ function CardsCarrito() {
   }, []);
 
   return (
-    <div className="cardsM">
+    <div className="cardsM11">
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Carrito de Compras
       </h1>
@@ -56,7 +56,7 @@ function CardsCarrito() {
               className="d-flex justify-content-center"
             >
               <Card
-                className="product-card"
+                className="product-card1"
                 style={{ width: "70%", marginBottom: "20px" }}
               >
                 <Row className="no-gutters">
@@ -64,18 +64,18 @@ function CardsCarrito() {
                     <Card.Img
                       src={producto.imagen}
                       alt={producto.nombre_producto}
-                      className="product-image"
+                      className="product-image11"
                     />
                   </Col>
                   <Col md={8}>
                     <Card.Body>
-                      <Card.Title className="product-title">
+                      <Card.Title className="product-title11">
                         {producto.nombre_producto}
                       </Card.Title>
-                      <Card.Text className="product-price">
+                      <Card.Text className="product-price11">
                         Precio: ${producto.precio}
                       </Card.Text>
-                      <Card.Text className="product-description">
+                      <Card.Text className="product-description1">
                         Descripción: {producto.descripcion}
                       </Card.Text>
                       <Form.Group className="mb-3">
@@ -101,7 +101,7 @@ function CardsCarrito() {
                           ))}
                         </Form.Control>
                       </Form.Group>
-                      <div className="product-actions">
+                      <div className="product-actions11">
                         <Button variant="danger" style={{ marginRight: "10px" }}>
                           Eliminar
                         </Button>
