@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       }
     },
     imagen: {
-      type:DataTypes.BLOB,
+      type:DataTypes.TEXT,
     allowNull: true
     },
     nombre_producto: {

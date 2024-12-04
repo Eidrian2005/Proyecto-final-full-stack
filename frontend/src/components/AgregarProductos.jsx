@@ -96,15 +96,13 @@ function ModalProducto() {
 {/* Subir Imagen */}
 <div>
         <input
-        type="file"
-        onChange={(event) => {
-        const file = event.target.files[0];
-        if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => setImagen(e.target.result);
-        reader.readAsDataURL(file);
-        }
-        }}
+         type="file"
+         onChange={(event) => {
+           const file = event.target.files[0];
+           if (file) {
+             setImagen(file); // Directamente el archivo, no su base64
+           }
+         }}
         />
 </div>
 

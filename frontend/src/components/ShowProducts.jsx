@@ -31,7 +31,7 @@ export default function ShowProducts() {
                 <Card.Img
                   variant="top"
                   src={producto.imagen || "placeholder.jpg"}
-                  alt={producto.nombre}
+                  alt={producto.nombre_producto}
                 />
               </div>
               <Card.Body className="producto-body">
