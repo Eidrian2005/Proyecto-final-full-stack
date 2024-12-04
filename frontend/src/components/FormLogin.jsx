@@ -3,6 +3,7 @@ import { Post_auth } from '../services/Postauth';
 import { toast } from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom'
 import AddToCartButton from './carrito';
+import "../styles/FormLogin.css"
 
 
 
@@ -45,8 +46,16 @@ function FormLogin() {
   };
 
 return (
-
+ <div className='bodyLogin'>
   <div className="container">
+
+  <div className="form-login-logo-section">
+          <img
+            className="form-login-logo"
+            src="../img/logo.png"
+            alt="Logo"
+          />
+        </div>
 
     <div className="panel">
 
@@ -96,8 +105,9 @@ return (
 
         </div>  
 
-    </div>
+     </div>
 
+  </div>
 </div>
 );
 }

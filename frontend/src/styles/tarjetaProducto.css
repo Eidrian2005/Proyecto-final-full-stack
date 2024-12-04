@@ -1,0 +1,93 @@
+.cardsM2 {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Color de fondo claro */
+  }
+  
+  .cardsM2 h1 {
+    font-size: 2.5rem;
+    color: #343a40; /* Tono oscuro */
+    margin-bottom: 30px;
+  }
+  
+  #prueba2 {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  #prueba2:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cradbdy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cradbdy p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6c757d; /* Tono gris */
+  }
+  
+  .Ctitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #495057;
+  }
+  
+  .CImg {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .Ctext {
+    font-size: 1rem;
+    color: #212529;
+    margin-bottom: 10px;
+  }
+  
+  .cardbdy div {
+    margin-top: 15px;
+  }
+  
+  .btn12 {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
+  
+  /* .btn12:first-child {
+    background-color: #007bff; 
+    border: none;
+  } */
+  
+ /* .btn:first-child:hover {
+    background-color: #0056b3;
+  } */
+  
+  /* .btn:nth-child(2) {
+    background-color: #28a745; 
+    border: none;
+  } */
+  
+  .btn:nth-child(2):hover {
+    background-color: #1c7c31;
+  }
+  
+  /* .btn:nth-child(3) {
+    background-color: #ffc107; 
+    border: none;
+  }
+  
+  .btn:nth-child(3):hover {
+    background-color: #e0a800;
+  } */
+  
