@@ -17,7 +17,7 @@ module.exports = {
         }
       },
       imagen: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       nombre_producto: {
         type: Sequelize.STRING
