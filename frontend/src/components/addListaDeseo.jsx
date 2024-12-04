@@ -22,7 +22,7 @@ const AddToListButton = ({ producto }) => {
       console.log("ID Producto:", producto);
       
       const listaData = {
-        id_productos: producto.id,
+        id_producto: producto.id,
         id_cliente: idCliente,
         fecha_agregado: "2024-12-03"
       };
@@ -45,7 +45,7 @@ const AddToListButton = ({ producto }) => {
       onClick={agregarListaDeseos}
       disabled={loading}
     >
-      {loading ? 'Agregando...' : 'Agregar'}
+      {loading ? 'Agregando...' : 'AgregarL'}
     </button>
   );
 };
