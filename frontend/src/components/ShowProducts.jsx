@@ -9,9 +9,9 @@ import { ProductContext } from "./ProductContext";
 export default function ShowProducts() {
   const { productos, loadProducts } = useContext(ProductContext);
 
-    useEffect(() => {
-      loadProducts();
-    }, [loadProducts]);
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   async function eliminarProducto(id) {
     await deleteproductos(id);
@@ -32,7 +32,6 @@ export default function ShowProducts() {
                   variant="top"
                   src={producto.imagen || "placeholder.jpg"}
                   alt={producto.nombre_producto}
-                  alt={producto.nombre_producto}
                 />
               </div>
               <Card.Body className="producto-body">
@@ -50,19 +49,6 @@ export default function ShowProducts() {
                   <Button
                     variant="danger"
                     className="producto-delete-button"
-                    onClick={() => eliminarProducto(producto.id)}
-                  >
-                    <FaTrash />
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
-  );
-}
                     onClick={() => eliminarProducto(producto.id)}
                   >
                     <FaTrash />
