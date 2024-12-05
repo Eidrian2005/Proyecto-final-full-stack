@@ -1,0 +1,12 @@
+#carrucel {
+   margin-left: 20px;
+    height: 450px; /* Cambia la altura a lo que necesites */
+    width: 600px;
+    overflow: hidden; /* Oculta cualquier parte que sobresalga */
+}
+
+#carrucel .carousel-item img {
+    align-items: center;
+    width: 90vw;
+    height: 100vh;
+}
