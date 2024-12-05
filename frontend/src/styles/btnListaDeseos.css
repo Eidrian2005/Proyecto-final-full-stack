@@ -1,0 +1,45 @@
+.icon-button-heart {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem; /* Tamaño del ícono */
+    color: #8a8987; /* Color del corazón */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    position: absolute;
+    left: 10px;
+    /* top: 1px; */
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .icon-button-heart:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .icon-button-heart:hover {
+    color: #c0392b; /* Cambia el color al pasar el mouse */
+    transform: scale(1.2); /* Agranda el ícono ligeramente */
+  }
+  
+  .heart-icon {
+    animation: pulse 1s infinite ease-in-out;
+  }
+  
+  .heart-icon.loading {
+    animation: none; /* Desactiva la animación si está cargando */
+  }
+
+
+  
+  /* Animación de latido */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  

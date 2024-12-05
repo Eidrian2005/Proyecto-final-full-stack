@@ -3,7 +3,7 @@
 .home-container {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -16,9 +16,10 @@
     height: 300px;
     position: relative;
     text-align: center;
-    /* background-image: url('./8873ae69-df05-49ce-bb07-47707e07dd24.jpg'); Cambia la URL por tu imagen */
-    /* background-size: cover; */
-    /* background-position: center; */
+    /* position: fixed; 
+     background-image: url('./8873ae69-df05-49ce-bb07-47707e07dd24.jpg'); 
+     background-size: cover; 
+     background-position: center; */
   }
   
   .header-overlay {
@@ -28,9 +29,9 @@
     right: 0;
     bottom: 0;
     background-color: rgba(204, 153, 0);
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     color: white;
   }
   
@@ -50,7 +51,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px 0;
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
     width: 100%;
   }
   

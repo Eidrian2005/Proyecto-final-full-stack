@@ -5,6 +5,7 @@ export default function CarritoPage() {
   return (
     <div>
       <CarritoBody/>
+      
     </div>
   )
 }
