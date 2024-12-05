@@ -32,16 +32,16 @@ function Tarjeta() {
       <Container fluid="md">
         <Row>
           {productos.map((producto, index) => (
-            <Col xs={12} md={6} lg={4} key={index}>
+            <Col xs={12} md={6} lg={3} key={index}>
               <Card id="prueba2" style={{ margin: '10px 0' }}>
                 <Card.Body className='cardbdy'>
                   <Card.Title className='Ctitle'>{producto.nombre_producto}</Card.Title>
                   <Card.Img className='CImg' src={producto.imagen} alt={producto.nombre_producto} />
                   <Card.Text className='Ctext'>Precio: ${producto.precio}</Card.Text>
-                  <Card.Text className='Ctext'>Tamaño: {producto.descripcion}</Card.Text>
+                  <Card.Text className='Ctext'>descripcion: {producto.descripcion}</Card.Text>
                   <div>
-                    <p>Especificaciones:</p>
-                    <Button className='btn12' variant="primary">Contáctanos</Button>
+                    {/* <p>Especificaciones:</p> */}
+                    {/* <Button className='btn12' variant="primary">Contáctanos</Button> */}
                     <AddToCartButton producto={producto}/>
                     <AddToListButton producto={producto}/>
                   </div>

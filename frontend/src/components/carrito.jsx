@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/btnCarrito.css';
 import getClienteId from '../services/obtenerClientesxToken';
 import Post_carrito from '../services/PostAddCarrito';
+import { FaShoppingCart } from 'react-icons/fa'; // Importa el ícono deseado
 
 const AddToCartButton = ({ producto }) => {
   const [loading, setLoading] = useState(false);
@@ -40,14 +41,19 @@ const AddToCartButton = ({ producto }) => {
 
   return (
     <button
-      className="btn-agregar"
+      className="icon-button-cart"
       onClick={agregarCarrito}
       disabled={loading}
     >
-      {loading ? 'Agregando...' : 'AgregarC'}
+      {loading ? (
+        <div className="spinner"></div>
+      ) : (
+        <FaShoppingCart className="shopping-cart-icon" />
+      )}
     </button>
   );
 };
 
 export default AddToCartButton;
+
 

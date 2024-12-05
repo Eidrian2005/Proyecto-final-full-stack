@@ -1,20 +1,56 @@
-/* Estilos básicos para el botón */
-.btn-agregar {
-    background-color: #4CAF50; /* Color verde */
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.icon-button-cart {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem; /* Tamaño del ícono */
+  color: #2c3e50; /* Color inicial */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: absolute;
+  left: 80%;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.icon-button-cart:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.icon-button-cart:hover {
+  color: #27ae60; /* Cambia el color al pasar el mouse */
+  transform: scale(1.2); /* Efecto de agrandamiento */
+}
+
+.shopping-cart-icon {
+  animation: bounce 1s infinite ease-in-out;
+}
+
+/* Animación de rebote para el carrito */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .btn-agregar:hover {
-    background-color: #45a049; /* Color verde más oscuro cuando el cursor pasa encima */
+  50% {
+    transform: translateY(-5px);
   }
-  
-  .btn-agregar:focus {
-    outline: none; /* Elimina el borde de enfoque */
+}
+
+/* Estilo del spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
+  100% {
+    transform: rotate(360deg);
+  }
+}

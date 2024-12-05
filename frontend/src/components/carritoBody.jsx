@@ -5,13 +5,16 @@ import FormLogin from './FormLogin';
 import FormContactanos from './Formcontactanos';
 import CardsCarrito from './cardsCarrito';
 
+
 const CarritoBody = () => {
   return (
     <div className="home-container">
       {/* Sección de encabezado */}
+      
       <div className="header-section">
         <div className="header-overlay">
         <Header />
+       
           
         </div>
       </div>

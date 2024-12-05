@@ -16,9 +16,10 @@
     height: 300px;
     position: relative;
     text-align: center;
-    /* background-image: url('./8873ae69-df05-49ce-bb07-47707e07dd24.jpg'); Cambia la URL por tu imagen */
-    /* background-size: cover; */
-    /* background-position: center; */
+    /* position: fixed; 
+     background-image: url('./8873ae69-df05-49ce-bb07-47707e07dd24.jpg'); 
+     background-size: cover; 
+     background-position: center; */
   }
   
   .header-overlay {
@@ -27,7 +28,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(204, 153, 0);
+   
     display: flex;
     justify-content: center;
     align-items: center;
