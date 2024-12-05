@@ -4,8 +4,8 @@ import Header from './header';
 import FormLogin from './FormLogin';
 import ShoppingCart from './carrito';
 import Tarjeta from './tarjetaProducto';
+import DarkVariantExample from './carrucel';
 
-import FormRegister from './FormRegistro';
 
 const Homebody = () => {
   return (
@@ -23,7 +23,7 @@ const Homebody = () => {
 
       {/* Pie de página */}
      
-      
+      <DarkVariantExample/>
       <Tarjeta/>
       
      

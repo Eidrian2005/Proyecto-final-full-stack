@@ -1,93 +1,58 @@
 .cardsM2 {
-    text-align: center;
-    padding: 20px;
-    /* background-color: #f8f9fa;  */
-  }
+  padding: 30px; /* Espaciado entre las cartas y el borde del contenedor */
+  text-align: center;
   
-  .cardsM2 h1 {
-    font-size: 2.5rem;
-    color: #343a40; /* Tono oscuro */
-    margin-bottom: 30px;
-  }
-  
-  #prueba2 {
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    height: 90%; /* Se asegura que tome toda la altura del contenedor */
-    max-width: 500px; /* Ancho máximo para las tarjetas */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribuye elementos */
-  }
-  
-  #prueba2:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .cradbdy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-  }
-  
-  .Ctitle {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #495057;
-  }
-  
-  .CImg {
-    width: 100%;
-    height: 150px; /* Altura uniforme para imágenes */
-    object-fit: cover; /* Asegura que la imagen llene el espacio sin deformarse */
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .Ctext {
-    font-size: 1rem;
-    color: #212529;
-    margin-bottom: 10px;
-  }
-  
-  .btn12 {
-    margin: 5px;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    border-radius: 5px;
-  }
-  
-  .cardbdy div {
-    margin-top: 15px;
-  }
-  
-  /* Nuevo: Forzar alturas iguales */
-  .row {
-    display: flex; /* Flexbox para alineación uniforme */
-    flex-wrap: wrap;
-    gap: 20px; /* Espaciado entre tarjetas */
-    justify-content: center; /* Centra las tarjetas */
-  }
-  
-  .col {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-  }
-  
-  #prueba2 {
-    min-height: 400px; /* Altura mínima para tarjetas */
-    /* max-height: 400px; Altura máxima para mantener uniformidad */
-  }
-  
+}
 
-  .btn:nth-child(2):hover {
-    background-color: #1c7c31;
-  }
-  
-  
-  
+/* .cards {
+  display: grid;
+  grid-template-columns: auto auto auto;
+} */
+
+.custom-card {
+  margin-bottom: 20px; /* Espacio adicional entre tarjetas */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 16rem;
+  height: 18rem;
+  overflow: auto;
+  transition: transform 0.3s;
+}
+
+.custom-img {
+  height: 140px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-sold {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: auto; /* Asegura que los botones se mantengan en la parte inferior */
+}
+
+.g-4 {
+  gap: 36px; /* Establece un espacio de 20px entre las columnas */
+}

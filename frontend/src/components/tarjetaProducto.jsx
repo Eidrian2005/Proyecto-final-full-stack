@@ -3,9 +3,9 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import AddToCartButton from './carrito';
 import AddToListButton from './addListaDeseo';
 import { GetProducto } from '../services/GetProducto';
-import "../styles/tarjetaProducto.css"
+import "../styles/tarjetaProducto.css";
 
-function Tarjeta() { 
+function Tarjeta() {
   const [productos, setProductos] = useState([]);
 
   const fetchProducts = async () => {
@@ -29,27 +29,31 @@ function Tarjeta() {
   return (
     <div className="cardsM2">
       <h1>Productos</h1>
-      <Container fluid="md">
-        <Row>
-          {productos.map((producto, index) => (
-            <Col xs={12} md={6} lg={3} key={index}>
-              <Card id="prueba2" style={{ margin: '10px 0' }}>
-                <Card.Body className='cardbdy'>
-                  <Card.Title className='Ctitle'>{producto.nombre_producto}</Card.Title>
-                  <Card.Img className='CImg' src={producto.imagen} alt={producto.nombre_producto} />
-                  <Card.Text className='Ctext'>Precio: ${producto.precio}</Card.Text>
-                  <Card.Text className='Ctext'>descripcion: {producto.descripcion}</Card.Text>
-                  <div>
-                    {/* <p>Especificaciones:</p> */}
-                    {/* <Button className='btn12' variant="primary">Contáctanos</Button> */}
-                    <AddToCartButton producto={producto}/>
-                    <AddToListButton producto={producto}/>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+      <Container fluid="md" className="cards">
+      <Row className="g-4">
+  {productos.map((producto, index) => (
+    <Col xs={12} sm={6} md={4} lg={3} key={index}>
+      <Card className="custom-card" style={{ margin: '20px 0' }}>
+        <Card.Img
+          className="custom-img"
+          variant="top"
+          src={producto.imagen}
+          alt={producto.nombre_producto}
+        />
+        <Card.Body>
+          <Card.Title className="product-title">{producto.nombre_producto}</Card.Title>
+          <Card.Text className="product-sold">120 vendidos</Card.Text>
+          <Card.Text className="product-price">CRC {producto.precio}</Card.Text>
+          <div className="button-group">
+            <AddToCartButton producto={producto} />
+            <AddToListButton producto={producto} />
+          </div>
+        </Card.Body>
+      </Card>
+    </Col>
+  ))}
+</Row>
+
       </Container>
     </div>
   );
