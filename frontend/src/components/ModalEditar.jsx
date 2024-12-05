@@ -91,7 +91,7 @@ function ModalEditar({ producto }) {
             {/* Subir Imagen */}
             <div>
               <input type="file" name="imagen" onChange={handleImageChange} />
-              {productoData.imagen && <img src={productoData.imagen} alt="Imagen del producto" />}
+              {productoData.imagen && <img src={productoData.imagen } className="img-fluid img-thumbnail" alt="Imagen del producto" />}
             </div>
 
             {/* Nombre del producto */}
