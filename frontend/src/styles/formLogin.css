@@ -9,7 +9,7 @@
 }
 
 /* Estructura general: logo a la izquierda, formulario a la derecha */
-.container {
+.container2 {
     display: flex;
     width: 900px; /* Ajusta el ancho total */
     border: 1px solid #ddd;

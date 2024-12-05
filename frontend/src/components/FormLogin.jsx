@@ -47,7 +47,7 @@ function FormLogin() {
 
 return (
  <div className='bodyLogin'>
-  <div className="container">
+  <div className="container2">
 
   <div className="form-login-logo-section">
           <img

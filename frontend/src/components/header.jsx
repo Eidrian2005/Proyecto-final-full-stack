@@ -14,9 +14,9 @@
         <nav className="nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="#homepage" className="nav-link">
+              <Link as={Link} to="/" className="nav-link">
                 Homepage
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a onClick={handlesearch} className="nav-link">
@@ -29,19 +29,14 @@
               </Link>
             </li>
             <li className="nav-item">
-              <a href="#news" className="nav-link">
-                News
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#contact" className="nav-link">
+              <Link as={Link} to="/Contactanos" className="nav-link">
                 Contact
-              </a>
+              </Link>
             </li>
             <li className="nav-item cart">
-              <a href="#cart" className="nav-link">
+              <Link as={Link} to="/carrito" className="nav-link">
                 <i className="fas fa-shopping-cart"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
