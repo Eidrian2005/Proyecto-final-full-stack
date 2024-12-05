@@ -14,9 +14,9 @@
         <nav className="nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="#homepage" className="nav-link">
+              <Link as={Link} to="/" className="nav-link">
                 Homepage
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a onClick={handlesearch} className="nav-link">
@@ -27,11 +27,6 @@
               <Link as={Link} to="/SobreNosotros" className="nav-link">
                 About Us
               </Link>
-            </li>
-            <li className="nav-item">
-              <a href="#news" className="nav-link">
-                News
-              </a>
             </li>
             <li className="nav-item">
               <a href="#contact" className="nav-link">
