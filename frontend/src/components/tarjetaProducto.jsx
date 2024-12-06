@@ -28,9 +28,9 @@ function Tarjeta() {
 
   return (
     <div className="cardsM2">
-      <h1>Productos</h1>
+       <h1>Productos</h1>
       <Container fluid="md" className="cards">
-      <Row className="g-4">
+      <Row className="g-3">
   {productos.map((producto, index) => (
     <Col xs={12} sm={6} md={4} lg={3} key={index}>
       <Card className="custom-card" style={{ margin: '20px 0' }}>

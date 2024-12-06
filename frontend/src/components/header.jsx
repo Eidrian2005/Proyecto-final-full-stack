@@ -1,6 +1,10 @@
   import React from "react";
   import "../styles/header.css"
   import {Link, useNavigate} from 'react-router-dom'
+  import logoTipo from '../img/logo.png'
+
+
+
   const Header = () => {
     const navigate = useNavigate()
 
@@ -11,6 +15,7 @@
 
     return (
       <header className="header">
+         <img className='image' src={logoTipo} alt="" />
         <nav className="nav">
           <ul className="nav-list">
             <li className="nav-item">

@@ -1,7 +1,8 @@
 #carrucel {
+    top: 40px;
    margin-left: 20px;
     height: 450px; /* Cambia la altura a lo que necesites */
-    width: 600px;
+    width: 100%;
     overflow: hidden; /* Oculta cualquier parte que sobresalga */
 }
 
