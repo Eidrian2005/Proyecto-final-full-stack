@@ -7,15 +7,18 @@ import Tarjeta from './tarjetaProducto';
 import DarkVariantExample from './carrucel';
 
 
+
 const Homebody = () => {
   return (
     <div className="home-container">
       {/* Sección de encabezado */}
-     
+      
      
       <div className="header-section">
+     
         <div className="header-overlay">
-        <Header />
+         
+        <Header/>
     
           
         </div>

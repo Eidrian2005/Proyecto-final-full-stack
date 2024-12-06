@@ -1,13 +1,15 @@
 .cardsM2 {
-  padding: 30px; /* Espaciado entre las cartas y el borde del contenedor */
+  padding: 60px;
   text-align: center;
-  
+ 
+  /* left: 40px; */
 }
 
-/* .cards {
-  display: grid;
-  grid-template-columns: auto auto auto;
-} */
+.cards {
+ 
+  display: flex;
+  justify-content: center;
+} 
 
 .custom-card {
   margin-bottom: 20px; /* Espacio adicional entre tarjetas */
@@ -17,7 +19,8 @@
   text-align: center;
   width: 16rem;
   height: 18rem;
-  overflow: auto;
+  /* margin-left: 30%; */
+  
   transition: transform 0.3s;
 }
 
@@ -54,5 +57,5 @@
 }
 
 .g-4 {
-  gap: 36px; /* Establece un espacio de 20px entre las columnas */
+  gap: 20px /* Establece un espacio de 20px entre las columnas */
 }

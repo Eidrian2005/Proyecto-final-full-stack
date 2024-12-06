@@ -3,7 +3,7 @@
     "username": "eidrian",
     "password": "EDGAV20052506",
     "database": "shedaboshop",
-    "host": "127.0.0.1",
+    "host": "192.168.100.217",
     "dialect": "mysql"
   },
   "test": {

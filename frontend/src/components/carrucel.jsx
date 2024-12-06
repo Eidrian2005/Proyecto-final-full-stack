@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import "../styles/carrucel.css"
 // import carrucelimg2 from "../img/IMG_20230929_125429 - Cindy baletti.jpg"
 // import carrucelimg3 from "../img/IMG-20240830-WA0069 - Cindy baletti.jpg"
+import tempo from '../img/shopping-in-greece-a-stunning-3d-rendering-for-your-social-picture-image_3754989.jpg'
 
 
 function DarkVariantExample() {
@@ -11,7 +12,7 @@ function DarkVariantExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-        //   src={}
+          src={tempo}
           alt="First slide"
         />
         <Carousel.Caption>

@@ -29,6 +29,13 @@
   padding: 0;
 }
 
+.image {
+  width: 75px;
+  height: 75px; /* Aseguramos que sea un cuadrado */
+  border-radius: 50%; /* Hace que sea completamente circular */
+  object-fit: cover; /* Ajusta el contenido dentro del contenedor */
+}
+
 .header .nav-item {
   display: flex;
   align-items: center;

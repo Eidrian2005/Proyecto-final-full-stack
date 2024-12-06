@@ -1,5 +1,6 @@
 .homePag{
-    padding: 50px 15px;
-    background: linear-gradient(45deg, #cda34f,#4e4e4e);
+
+    /* padding: 50px 15px; */
+    background: linear-gradient(45deg, grey,#4e4e4e);
     color: white;
 }
