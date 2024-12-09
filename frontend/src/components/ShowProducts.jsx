@@ -4,6 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "../styles/ShowProducts.css";
 import ModalEditar from "./ModalEditar";
+import { deleteproductos } from "../services/DeleteProducts";
 import { ProductContext } from "./ProductContext";
 
 export default function ShowProducts() {
