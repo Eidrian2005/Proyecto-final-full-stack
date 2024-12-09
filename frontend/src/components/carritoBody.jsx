@@ -6,6 +6,12 @@ import CardsCarrito from './cardsCarrito';
 import AdminSidebar  from './AdminSidebar'
 
 const CarritoBody = () => {
+  const token = localStorage.getItem('token');
+  const isAuthenticaded = localStorage.getItem('Autenticado');
+
+
+
+
   return (
     <div className="home-container">
       {/* Sección de encabezado */}
@@ -21,15 +27,18 @@ const CarritoBody = () => {
       </div>
 
       {/* Pie de página */}
+
+      { isAuthenticaded === "true" && token ? 
+      <CardsCarrito/> : <FormLogin/>
+      }
       
       <CardsCarrito/>
-      
+
       <div className="footer-section">
       
         <div className="pagination">
         {/* <FormLogin /> */}
        
-          <button className="pagination-button">1</button>
         </div>
       </div>
     </div>
