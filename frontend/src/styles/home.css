@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+   
   }
   
   /* Encabezado */
@@ -23,21 +24,29 @@
   }
   
   .header-overlay {
-    position: absolute;
-    height: 400px;
+    position: fixed;
+    height: 150px;
     width: 100%;
     left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0;
     background-image: url('../img/las-mejores-tiendas-online-para-vender-tus-productos-en-peru.png');
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen dentro del contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-}
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  
+  .hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+
 
  
 
