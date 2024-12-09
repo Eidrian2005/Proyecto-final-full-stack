@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faPlus, faHistory } from '@fortawesome/free-solid-svg-icons';
 import ModalCategoria from "./AgregarCategoria";
 import ModalProducto from "./AgregarProductos";
+
 const AdminSidebar = (agregarCategoria) => {
   const [isOpen, setIsOpen] = useState(false);
 

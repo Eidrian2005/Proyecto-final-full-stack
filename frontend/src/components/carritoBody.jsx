@@ -1,10 +1,9 @@
 import React from 'react';
 import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
-import FormLogin from './FormLogin';
-import FormContactanos from './Formcontactanos';
+import toggleSidebar from './AdminSidebar'
 import CardsCarrito from './cardsCarrito';
-
+import AdminSidebar  from './AdminSidebar'
 
 const CarritoBody = () => {
   const token = localStorage.getItem('token');
@@ -19,16 +18,22 @@ const CarritoBody = () => {
       
       <div className="header-section">
         <div className="header-overlay">
+        
         <Header />
+       
        
           
         </div>
       </div>
 
       {/* Pie de página */}
+
       { isAuthenticaded === "true" && token ? 
       <CardsCarrito/> : <FormLogin/>
       }
+      
+      <CardsCarrito/>
+
       <div className="footer-section">
       
         <div className="pagination">
