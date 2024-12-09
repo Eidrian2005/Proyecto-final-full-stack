@@ -1,5 +1,5 @@
 node_modules
 .env
 uploads
-config/config.js
-db/db.js
+/config/
+/db/
