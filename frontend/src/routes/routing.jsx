@@ -9,12 +9,13 @@ import AdminPage from '../pages/admin/adminPage';
 import Contactanos from '../pages/contactanos';
 import Sobre_nosotros from '../pages/sobre_nosotros';
 import CarritoPage from '../pages/carritoPage';
-
+import Paypalpage from '../pages/paypalpage';
 const Routing = () => {
 
 return (
     <Router>
     <Routes>
+        <Route path="/pago" element={<Paypalpage />} />
         <Route path="/" element={<Home />} />
         <Route path='/SobreNosotros' element={<Sobre_nosotros/>} />
         <Route path='/AdminTask' element={<AdminPage/>}/>

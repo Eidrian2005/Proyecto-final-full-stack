@@ -82,6 +82,8 @@ const TotalCarrito = () => {
             <p>Total a pagar:</p>
             <p>{`$${total.toFixed(2)}`}</p>
           </div>
+
+          <button>Comprar</button>
         </>
       )}
     </div>
