@@ -3,8 +3,9 @@ import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
 import toggleSidebar from './AdminSidebar'
 import CardsCarrito from './cardsCarrito';
-import AdminSidebar  from './AdminSidebar'
-
+import AdminSidebar  from './AdminSidebar';
+import FormLogin from './FormLogin'
+import TotalCarrito from '../components/totalCarrito'
 const CarritoBody = () => {
   const token = localStorage.getItem('token');
   const isAuthenticaded = localStorage.getItem('Autenticado');
@@ -32,7 +33,10 @@ const CarritoBody = () => {
       <CardsCarrito/> : <FormLogin/>
       }
       
-      <CardsCarrito/>
+
+      {isAuthenticaded === "true" && token ?
+        <TotalCarrito/> : null
+      }
 
       <div className="footer-section">
       
