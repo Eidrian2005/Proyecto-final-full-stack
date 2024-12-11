@@ -7,7 +7,7 @@ const FormPaypal=()=> {
 
 
     const initianlOptions ={
-        "clientId":"AYn5GQDaEORz5rK1WX5eLuo2xeMcwHvKn9VDWJAatOcXArvWADmDN2ykf16K9xkkpPKxB1yh_zNFQzG3",
+        "clientId":"AafAivx3ce3upGwTAKJZ4rdmAWfhvIzvqkcGLM1Cvq-EcyaaZ5ekRouExH_iXGEHDdo3FAFLZB9iCJJ0",
          currency:"USD",
          intent:"capture"
     }

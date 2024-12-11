@@ -3,7 +3,7 @@ import '../styles/totalCarrito.css';
 import { GetCarrito } from '../services/GetCarrito';
 import { GetProducto } from '../services/GetProducto';
 import Swal from 'sweetalert2';
-
+import { Link } from "react-router-dom";
 const TotalCarrito = () => {
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
@@ -83,7 +83,9 @@ const TotalCarrito = () => {
             <p>{`$${total.toFixed(2)}`}</p>
           </div>
 
-          <button>Comprar</button>
+          <Link to="/pago">
+      <button>Comprar</button>
+      </Link>
         </>
       )}
     </div>

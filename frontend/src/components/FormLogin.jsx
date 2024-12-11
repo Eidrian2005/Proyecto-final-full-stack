@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Post_auth } from '../services/Postauth';
 import { toast } from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom'
-import AddToCartButton from './carrito';
 import "../styles/FormLogin.css"
-
-
+import { ProductContext } from './ProductContext';
+import { decode } from 'jwt-js-decode';
+import logoTipo from "../img/logo.png";
 
 function FormLogin() {
 
+  const { login } = useContext(ProductContext);
   const navigate = useNavigate()
     const [usuario, setUsername] = useState('');
     const [contraseña, setPassword] = useState('');
@@ -24,26 +25,41 @@ function FormLogin() {
     };
 
 
-  const cargar = async (e) => {
-    e.preventDefault()
+    const cargar = async (e) => {
+      e.preventDefault();
+    
+      try {
+        const dataToken = await Post_auth(usuario, contraseña); // Llama a la función de autenticación
+    
+        if (dataToken && dataToken.token) {
+          // Decodificar el token
+          const { payload } = decode(dataToken.token); // Extrae el payload usando jwt-js-decode
+          const rol = payload.descripcion; // Asegúrate de que esta propiedad exista en el token
+    
+          localStorage.setItem("Autenticado", "true");
+    
+          toast.success("Bienvenido", { autoClose: 700 });
+    
+          // Redirigir según el rol
+          setTimeout(() => {
+            if (rol === "administrador") {
+              navigate("/AdminTask");
+            } else {
+              navigate("/");
+            }
+          }, 1000);
+    
+          login(payload); // Lógica para manejar inicio de sesión global
+        } else {
+          toast.warning("Usuario o contraseña incorrectos");
+        }
+      } catch (error) {
+        console.error("Error al autenticar:", error);
+        toast.error("Ocurrió un error al iniciar sesión");
+      }
+    };
+    
 
-  const users = await Post_auth(usuario, contraseña)
-
-    if (users) {
-      console.log("Inicio de sesión exitoso.");
-      toast.success('Bienvenido',{
-        autoClose: 700
-      })
-      setTimeout(() => {
-        navigate("/")
-      },1000);
-      
-      localStorage.setItem('Autenticado', 'true')
-  } else {
-      toast.warning('Usuario o contraseña incorrectos')
-      console.log("Usuario o contraseña incorrectos.");
-  }
-  };
 
 return (
  <div className='bodyLogin'>
@@ -100,7 +116,7 @@ return (
 
                 <br/>
                 <p>¿No tienes cuenta? <Link to="/Register">Crea una</Link></p>
-                <AddToCartButton/>
+                
             </form>
 
         </div>  

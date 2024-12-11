@@ -18,10 +18,6 @@ module.exports = (sequelize) => {
 
       // Relación con Condicion_pedido
       this.belongsTo(models.Condicion_de_pedidos, { foreignKey: 'id_condicion' })
-
-      // Relación con Informacion_de_pago 
-      this.belongsTo(models.Informacion_de_pago, { foreignKey: 'id_informacion_pago'});
-
     }
   }
   Pedidos.init({
@@ -43,13 +39,6 @@ module.exports = (sequelize) => {
       type:DataTypes.INTEGER,
       references: {
         model: "Condicion_de_pedidos",
-        key: "id"
-      }
-    },
-    id_informacion_pago:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Informacion_de_pago",
         key: "id"
       }
     },
