@@ -2,45 +2,109 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { GetCarrito } from "../services/GetCarrito";
 import { GetProducto } from "../services/GetProducto";
-// import Swal from "sweetalert2";
+import { deleteCarrito } from "../services/DeleteCarrito";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/cardsCarrito.css";
+
+// toast.configure();
 
 function CardsCarrito() {
   const [carrito, setCarrito] = useState([]); // Datos del carrito (productos + cantidad)
   const [productos, setProductos] = useState([]); // Datos de productos (detalles generales)
+  const [deleting, setDeleting] = useState(false); // Estado de carga para eliminar productos
 
   // Función para obtener datos del carrito y de productos
-  const fetchProducts = async () => {
-    try {
-      const carritoData = await GetCarrito(); // Datos del carrito
-      const productosData = await GetProducto(); // Datos generales de los productos
+  // const fetchProducts = async () => {
+  //   try {
+  //     const carritoData = await GetCarrito(); // Datos del carrito
+  //     const productosData = await GetProducto(); // Datos generales de los productos
 
-      // Relacionar productos del carrito con detalles de productos
-      const carritoConDetalles = carritoData.map((item) => {
-        const productoDetalles = productosData.find(
-          (producto) => producto.id === item.id_producto
-        );
-        return {
-          ...item,
-          ...productoDetalles, // Agregar detalles al carrito
-        };
-      });
+  //     console.log(carritoData);
 
-      setCarrito(carritoConDetalles);
-      setProductos(productosData); // Guardar productos por si se necesitan en el futuro
-    } catch (error) {
-      console.error("Error al obtener productos:", error);
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Error",
-      //   text: "No se pudieron cargar los productos.",
-      // });
-    }
-  };
+     
+      
+  //     // Mapear en el carrito el producto que se relacione con su id en ambas tablas
+  //     const carritoConDetalles = carritoData.map((item) => {
+  //       const productoDetalles = productosData.find(
+  //         (producto) => producto.id === item.id_producto
+  //       );
+  //       return {
+  //         ...item,
+  //         ...productoDetalles, // Agregar detalles al carrito
+  //       };
+  //     });
+
+  //     setCarrito(carritoConDetalles);
+  //     setProductos(productosData); // Guardar productos por si se necesitan en el futuro
+  //   } catch (error) {
+  //     console.error("Error al obtener productos:", error);
+  //     toast.error("No se pudieron cargar los productos.", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const fetchCarrito = async () => {
+        try {
+          const carritoData = await GetCarrito(); // Datos del carrito
+          const productosData = await GetProducto(); // Datos generales de los productos
+
+           // Combinar los datos del carrito con los detalles del producto
+        const carritoConDetalles = carritoData.map((item) => {
+          const productoDetalles = productosData.find(
+            (producto) => producto.id === item.id_producto // Asegúrate de que 'id_producto' es el campo correcto
+          );
+          return {
+            id_carrito: item.id,
+            ...item,
+            ...productoDetalles, // Combina los detalles del producto con el carrito
+          };
+        });
+          setCarrito(carritoConDetalles)
+          setProductos(productosData)
+
+          console.log('Carrito info', carritoData);
+          console.log('Productos info', productosData);
+          
+        }catch{
+          console.log('Error');
+          
+        }
+      }
+
+      fetchCarrito()
+  }, [])
+
+  console.log('CARRITO CON DETALLES', carrito);
+  
+
+  // Función para eliminar un producto del carrito
+  const eliminarCarrito = async (idCarrito) => {
+    try {
+      setDeleting(true);
+      await deleteCarrito(idCarrito);
+      setCarrito((prev) => prev.filter((item) => item.id !== idCarrito)); // Actualizar estado
+      toast.warning("Producto eliminado exitosamente", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+      toast.error("Error al eliminar el producto", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    } finally {
+      setDeleting(false);
+    }
+  };
+  
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
 
   return (
     <div className="cardsM11">
@@ -85,11 +149,10 @@ function CardsCarrito() {
                           value={producto.cantidad} // Cantidad actual
                           style={{ width: "80px", display: "inline-block" }}
                           onChange={(e) =>
-                            setCarrito((prevState) =>
-                              prevState.map((item, idx) =>
+                            setCarrito((nuevaCant) =>
+                              nuevaCant.map((item, idx) =>
                                 idx === index
-                                  ? { ...item, cantidad: e.target.value }
-                                  : item
+                                  ? { ...item, cantidad: e.target.value } : item
                               )
                             )
                           }
@@ -102,8 +165,13 @@ function CardsCarrito() {
                         </Form.Control>
                       </Form.Group>
                       <div className="product-actions11">
-                        <Button variant="danger" style={{ marginRight: "10px" }}>
-                          Eliminar
+                        <Button
+                          variant="danger"
+                          style={{ marginRight: "10px" }}
+                          onClick={() => eliminarCarrito(producto.id_carrito)}
+                          disabled={deleting} // Deshabilitar mientras se elimina
+                        >
+                          {deleting ? "Eliminando..." : "Eliminar"}
                         </Button>
                         <Button variant="secondary">
                           Guardar para más tarde

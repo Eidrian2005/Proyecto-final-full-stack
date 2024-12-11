@@ -2,7 +2,7 @@
 .sidebar {
   width: 250px;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 70px; /* Justo debajo del header */
   left: -250px; /* Oculto por defecto en móviles */
   background-color: #343a40;
