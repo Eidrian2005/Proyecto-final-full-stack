@@ -1,45 +1,23 @@
 .about-us-section {
-    padding: 50px 15px;
-    background: linear-gradient(45deg, #cda34f, #4e4e4e);
-    color: #f8f8f8;
-  }
-  
-  .about-us-header h1 {
-    font-size: 3rem;
-    color: #cda34f;
-    margin-bottom: 20px;
-  }
-  
-  .about-us-header p {
-    font-size: 1.2rem;
-    color: #dddddd;
-  }
-  
-  .about-us-card {
-    background: #5a5a5a;
-    border-radius: 15px;
-    padding: 30px 20px;
-    margin: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .about-us-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .about-us-card h3 {
-    color: #f8f8f8;
-    margin-top: 15px;
-  }
-  
-  .about-us-card p {
-    color: #cccccc;
-  }
-  
-  .about-icon {
-    font-size: 3rem;
-    color: #cda34f;
-  }
-  
+  padding: 50px 15px;
+  background: linear-gradient(45deg, #876d39, #4e4e4e);
+  color: #f8f8f8;
+  min-height: 100vh; /* Asegura que el fondo ocupe toda la pantalla */
+  display: flex; /* Centra el contenido */
+  flex-direction: column; 
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+}
+
+.about-us-header h1 {
+  font-size: 3rem;
+  color: #cda34f;
+  margin-bottom: 20px;
+}
+
+.about-us-header p {
+  font-size: 1.2rem;
+  color: #dddddd;
+  margin-top: 20px;
+  line-height: 1.6;
+}

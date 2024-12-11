@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       imagen: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       usuario: {
         type: Sequelize.STRING
