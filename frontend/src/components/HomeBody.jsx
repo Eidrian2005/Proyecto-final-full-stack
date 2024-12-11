@@ -3,6 +3,7 @@ import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
 import Tarjeta from './tarjetaProducto';
 import DarkVariantExample from './carrucel';
+import AdminSidebar from './AdminSidebar';
 
 const HeaderOverlay = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -11,9 +12,7 @@ const HeaderOverlay = () => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY) {
-      setIsVisible(false); // Desaparece al desplazarse hacia abajo
-    } else {
-      setIsVisible(true); // Reaparece al desplazarse hacia arriba
+      setIsVisible(true); // Ocultar al desplazarse hacia abajo
     }
     setLastScrollY(currentScrollY);
   };
@@ -35,19 +34,36 @@ const HeaderOverlay = () => {
 const Homebody = () => {
   return (
     <div className="home-container">
-      {/* Sección de encabezado */}
-      <HeaderOverlay />
+      {/* Barra lateral */}
+      <AdminSidebar />
 
       {/* Contenido principal */}
-      <div className="content-section">
-        <DarkVariantExample />
-        <Tarjeta />
-      </div>
+      <div className="main-content">
+      <Header />
+        <HeaderOverlay />
 
-      {/* Pie de página */}
-      <div className="footer-section">
-        <div className="pagination">
-          <button className="pagination-button">1</button>
+        {/* Sección de contenido */}
+        <div className="content-section">
+          <h2>Bienvenido al Panel de Administración</h2>
+          <p>Seleccione una opción del menú lateral para empezar.</p>
+
+          {/* Carrusel */}
+          <div className="carousel-container">
+            <DarkVariantExample />
+          </div>
+
+          {/* Tarjetas de productos */}
+          <div className="tarjetas-container">
+            <Tarjeta />
+           
+          </div>
+        </div>
+
+        {/* Pie de página */}
+        <div className="footer-section">
+          <div className="pagination">
+            <button className="pagination-button">1</button>
+          </div>
         </div>
       </div>
     </div>
