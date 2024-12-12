@@ -4,6 +4,10 @@ import Header from './header';
 import Tarjeta from './tarjetaProducto';
 import DarkVariantExample from './carrucel';
 import AdminSidebar from './AdminSidebar';
+import ImgMediaCard from '../components/cardsListaDeseos';
+import Sidebar from './sidebar';
+
+
 
 const HeaderOverlay = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -35,7 +39,8 @@ const Homebody = () => {
   return (
     <div className="home-container">
       {/* Barra lateral */}
-      <AdminSidebar />
+      {/* <AdminSidebar /> */}
+         <Sidebar/>
 
       {/* Contenido principal */}
       <div className="main-content">
@@ -55,7 +60,8 @@ const Homebody = () => {
           {/* Tarjetas de productos */}
           <div className="tarjetas-container">
             <Tarjeta />
-           
+            <ImgMediaCard/>
+      
           </div>
         </div>
 

@@ -2,12 +2,13 @@
 .home-container {
   display: flex;
   flex-direction: row;
+  
 }
 
 .main-content {
   flex: 1;
   /* padding: 20px; */
-  background-color: #f8f9fa;
+  background: linear-gradient(45deg, #876d39, #4e4e4e);
   min-height: 100vh;
 }
 

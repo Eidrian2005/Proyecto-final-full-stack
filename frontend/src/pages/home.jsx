@@ -5,13 +5,13 @@ import Contactanos from '../components/Formcontactanos';
 import '../styles/homePage.css'
 
 
+
 export default function Home() {
   return (
     <div className='homePag'>
         {/* <Header/> */}
         <Homebody/>
-       
-        
+      
     </div>
   )
 }

@@ -14,9 +14,9 @@ export default function BodyAdmin() {
       </Row>
 
       <Row>
-        {/* <Col xs={2} className='bg-body-tertiary py-5 '>
+        <Col xs={2} className='bg-body-tertiary py-5 '>
           <AdminSiderbar />
-        </Col> */}
+        </Col>
         <Col xs={10} className='py-5 p-5'>
           <ShowProducts />
         </Col>
