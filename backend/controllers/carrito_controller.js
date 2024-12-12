@@ -3,7 +3,10 @@ const { Carrito_de_compras } = require("../models");
 //----------------------Get------------------------//
 const get_all_carritos = async (req, res) => {
   try {
-    const carritos = await Carrito_de_compras.findAll()
+const clienteId = req.usuario.id; // Obtenemos el ID del cliente autenticado
+    const carritos = await Carrito_de_compras.findAll({
+      where: { id_cliente: clienteId },
+    });
     res.status(200).json(carritos);
   } catch (error) {
     console.error(error);
@@ -15,7 +18,12 @@ const get_all_carritos = async (req, res) => {
 const get_carrito_by_id = async (req, res) => {
   try {
     const { id } = req.params;
-    const carrito = await Carrito_de_compras.findByPk(id)
+    const clienteId = req.usuario.id; // Obtenemos el ID del cliente autenticado
+
+    const carrito = await Carrito_de_compras.findOne({
+      where: { id, id_cliente: clienteId }, // Validamos que el carrito sea del cliente
+    });
+
     if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
 
     res.status(200).json(carrito);
@@ -66,11 +74,20 @@ const post_carrito = async (req, res) => {
 const put_carrito = async (req, res) => {
   try {
     const { id } = req.params;
-    const { id_producto, id_cliente, cantidad } = req.body;
-    const carrito = await Carrito_de_compras.findByPk(id);
-    if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
+    const clienteId = req.usuario.id; // ID del usuario autenticado
+    const { cantidad } = req.body;
 
-    await carrito.update({ id_producto, id_cliente, cantidad });
+    // Buscar el carrito y verificar que pertenece al usuario autenticado
+    const carrito = await Carrito_de_compras.findOne({
+      where: { id, id_cliente: clienteId },
+    });
+
+    if (!carrito) {
+      return res.status(404).json({ error: "Carrito no encontrado o acceso denegado." });
+    }
+
+    // Actualizar la cantidad
+    await carrito.update({ cantidad });
     res.status(200).json(carrito);
   } catch (error) {
     console.error(error);
@@ -82,8 +99,15 @@ const put_carrito = async (req, res) => {
 const delete_carrito = async (req, res) => {
   try {
     const { id } = req.params;
-    const carrito = await Carrito_de_compras.findByPk(id);
-    if (!carrito) return res.status(404).json({ error: "Carrito no encontrado" });
+    const clienteId = req.usuario.id; // ID del usuario autenticado
+
+    const carrito = await Carrito_de_compras.findOne({
+      where: { id, id_cliente: clienteId },
+    });
+
+    if (!carrito) {
+      return res.status(404).json({ error: "Carrito no encontrado o acceso denegado." });
+    }
 
     await carrito.destroy();
     res.status(204).send();
