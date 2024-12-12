@@ -4,7 +4,7 @@ body {
 }
 
 /* Sidebar Container */
-.sidebar {
+.sidebarA {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,12 +17,12 @@ body {
 }
 
 /* Sobresale un poco */
-.sidebar.hovered {
+.sidebarA.hovered {
     width: 250px; /* Ancho al desplegar */
 }
 
 /* Sidebar Content */
-.sidebar a {
+.sidebarA a {
     display: flex;
     align-items: center;
     padding: 15px;
@@ -33,11 +33,11 @@ body {
     transition: background 0.3s;
 }
 
-.sidebar a:hover {
+.sidebarA a:hover {
     background-color: #575757;
 }
 
-.sidebar a .icon {
+.sidebarA a .icon {
     margin-right: 15px;
     font-size: 24px;
     width: 30px;
@@ -45,13 +45,13 @@ body {
 }
 
 /* Icono visible siempre */
-.sidebar a .text {
+.sidebarA a .text {
     opacity: 0;
     white-space: nowrap;
     transition: opacity 0.3s;
 }
 
 /* Texto visible al desplegar */
-.sidebar.hovered a .text {
+.sidebarA.hovered a .text {
     opacity: 1;
 }

@@ -7,7 +7,7 @@ const Sidebar = () => {
 
     return (
         <div 
-            className={`sidebar ${isHovered ? 'hovered' : ''}`}
+            className={`sidebarA ${isHovered ? 'hovered' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

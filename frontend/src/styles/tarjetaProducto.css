@@ -1,26 +1,20 @@
 .cardsM2 {
   padding: 60px;
   text-align: center;
- 
-  /* left: 40px; */
 }
 
 .cards {
- 
   display: flex;
   justify-content: center;
-} 
+  padding: 20px; /* Ajustado para evitar demasiado espacio */
+}
 
 .custom-card {
-  margin-bottom: 20px; /* Espacio adicional entre tarjetas */
+  margin-bottom: 20px; /* Reduce el margen inferior */
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 16rem;
-  height: 18rem;
-  /* margin-left: 30%; */
-  
   transition: transform 0.3s;
 }
 
@@ -53,9 +47,5 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: auto; /* Asegura que los botones se mantengan en la parte inferior */
-}
-
-.g-4 {
-  gap: 20px /* Establece un espacio de 20px entre las columnas */
+  margin-top: auto;
 }
