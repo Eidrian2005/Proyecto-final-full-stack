@@ -15,36 +15,6 @@ function CardsCarrito() {
   const [deleting, setDeleting] = useState(false); // Estado de carga para eliminar productos
 
   // Función para obtener datos del carrito y de productos
-  // const fetchProducts = async () => {
-  //   try {
-  //     const carritoData = await GetCarrito(); // Datos del carrito
-  //     const productosData = await GetProducto(); // Datos generales de los productos
-
-  //     console.log(carritoData);
-
-     
-      
-  //     // Mapear en el carrito el producto que se relacione con su id en ambas tablas
-  //     const carritoConDetalles = carritoData.map((item) => {
-  //       const productoDetalles = productosData.find(
-  //         (producto) => producto.id === item.id_producto
-  //       );
-  //       return {
-  //         ...item,
-  //         ...productoDetalles, // Agregar detalles al carrito
-  //       };
-  //     });
-
-  //     setCarrito(carritoConDetalles);
-  //     setProductos(productosData); // Guardar productos por si se necesitan en el futuro
-  //   } catch (error) {
-  //     console.error("Error al obtener productos:", error);
-  //     toast.error("No se pudieron cargar los productos.", {
-  //       position: "top-right",
-  //       autoClose: 3000,
-  //     });
-  //   }
-  // };
 
   useEffect(() => {
     const fetchCarrito = async () => {
