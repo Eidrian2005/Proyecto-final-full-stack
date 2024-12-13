@@ -5,7 +5,10 @@ const { Lista_de_deseos } = require("../models");
 //----------------------Get------------------------//
 const get_all_lista_de_deseos = async (req, res) => {
   try {
-    const listaDeDeseos = await Lista_de_deseos.findAll();
+    const clienteId = req.usuario.id; // Obtener el ID del cliente autenticado
+    const listaDeDeseos = await Lista_de_deseos.findAll({
+      where: { id_cliente: clienteId }, // Filtrar por cliente autenticado
+    });
     res.status(200).json(listaDeDeseos);
   } catch (error) {
     console.error(error);
@@ -17,10 +20,16 @@ const get_all_lista_de_deseos = async (req, res) => {
 const get_lista_de_deseos_by_id = async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await Lista_de_deseos.findByPk(id);
+    const clienteId = req.usuario.id; // Obtener el ID del cliente autenticado
+
+    const item = await Lista_de_deseos.findOne({
+      where: { id, id_cliente: clienteId }, // Validar que el elemento sea del cliente
+    });
+
     if (!item) {
       return res.status(404).json({ error: "Elemento no encontrado en la lista de deseos." });
     }
+
     res.status(200).json(item);
   } catch (error) {
     console.error(error);
@@ -31,32 +40,29 @@ const get_lista_de_deseos_by_id = async (req, res) => {
 //----------------------Post------------------------//
 const post_lista_de_deseos = async (req, res) => {
   try {
-    const { id_producto, id_cliente, fecha_agregado } = req.body;
+    const { id_producto, fecha_agregado } = req.body;
+    const clienteId = req.usuario.id; // Obtener el ID del cliente autenticado
 
-    console.log('Req Body', req.body);
-    
     // Verificar si ya existe un registro en la lista de deseos con el mismo producto y cliente
     const listaDeseosExistente = await Lista_de_deseos.findOne({
-      where: { id_producto, id_cliente } // Aquí se pasa un objeto con las condiciones
+      where: { id_producto, id_cliente: clienteId },
     });
 
-    console.log("Lista de deseos existente", listaDeseosExistente);
-
     if (listaDeseosExistente) {
-      return res.status(409).json({ error: 'Ya existe un elemento en la lista de deseos con el mismo producto y cliente.' });
+      return res.status(409).json({ error: "Ya existe un elemento en la lista de deseos con el mismo producto y cliente." });
     } else {
       // Crear un nuevo registro en la lista de deseos
       const nuevoItem = await Lista_de_deseos.create({
         id_producto,
-        id_cliente,
+        id_cliente: clienteId,
         fecha_agregado,
       });
-  
+
       res.status(201).json({
         message: "Elemento agregado a la lista de deseos",
         deseo: nuevoItem,
       });
-    }    
+    }  
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al agregar un elemento a la lista de deseos." });
@@ -67,16 +73,22 @@ const post_lista_de_deseos = async (req, res) => {
 const put_lista_de_deseos = async (req, res) => {
   try {
     const { id } = req.params;
-    const { id_productos, id_cliente, fecha_agregado } = req.body;
-    const item = await Lista_de_deseos.findByPk(id);
+    const clienteId = req.usuario.id; // Obtener el ID del cliente autenticado
+    const { id_producto, fecha_agregado } = req.body;
+
+    const item = await Lista_de_deseos.findOne({
+      where: { id, id_cliente: clienteId }, // Validar que el elemento sea del cliente
+    });
+
     if (!item) {
-      return res.status(404).json({ error: "Elemento no encontrado en la lista de deseos." });
+      return res.status(404).json({ error: "Elemento no encontrado o acceso denegado." });
     }
+
     await item.update({
-      id_productos,
-      id_cliente,
+      id_producto,
       fecha_agregado,
     });
+
     res.status(200).json(item);
   } catch (error) {
     console.error(error);
@@ -88,10 +100,16 @@ const put_lista_de_deseos = async (req, res) => {
 const delete_lista_de_deseos = async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await Lista_de_deseos.findByPk(id);
+    const clienteId = req.usuario.id; // Obtener el ID del cliente autenticado
+
+    const item = await Lista_de_deseos.findOne({
+      where: { id, id_cliente: clienteId }, // Validar que el elemento sea del cliente
+    });
+
     if (!item) {
-      return res.status(404).json({ error: "Elemento no encontrado en la lista de deseos." });
+      return res.status(404).json({ error: "Elemento no encontrado o acceso denegado." });
     }
+
     await item.destroy();
     res.status(204).send();
   } catch (error) {
