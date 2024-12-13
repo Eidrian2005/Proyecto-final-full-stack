@@ -3,6 +3,7 @@ import "../styles/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import logoTipo from "../img/logo.png";
 
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -35,21 +36,7 @@ const Header = () => {
               Contact
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/ListaDeseados" className="nav-link">
-              Wishlist
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/Login" className="nav-link">
-              Login
-            </Link>
-          </li>
-          <li className="nav-item cart">
-            <Link to="/carrito" className="nav-link">
-              <i className="fas fa-shopping-cart"></i>
-            </Link>
-          </li>
+        
         </ul>
       </nav>
     </header>

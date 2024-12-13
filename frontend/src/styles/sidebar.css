@@ -1,57 +1,142 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 /* Sidebar Container */
-.sidebar {
+.sidebarA {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 60px; /* Ancho inicial */
-    background-color: #333;
-    transition: width 0.3s;
+    background: linear-gradient(180deg, #2c2f33, #343a40); /* Fondo degradado */
+    transition: width 0.3s ease-in-out;
     overflow: hidden;
     z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para un efecto flotante */
 }
 
-/* Sobresale un poco */
-.sidebar.hovered {
+/* Al pasar el mouse, el ancho cambia */
+.sidebarA.hovered {
     width: 250px; /* Ancho al desplegar */
 }
 
 /* Sidebar Content */
-.sidebar a {
+.sidebarA a {
     display: flex;
     align-items: center;
     padding: 15px;
     text-decoration: none;
     color: white;
-    font-size: 18px;
-    border-bottom: 1px solid #444;
-    transition: background 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s, color 0.3s;
 }
 
-.sidebar a:hover {
+.sidebarA a:hover {
     background-color: #575757;
+    color: #f8f9fa;
+    border-radius: 5px;
 }
 
-.sidebar a .icon {
-    margin-right: 15px;
+.sidebarA a .icon {
     font-size: 24px;
     width: 30px;
     text-align: center;
+    color: #bdbdbd;
+    transition: color 0.3s;
 }
 
-/* Icono visible siempre */
-.sidebar a .text {
-    opacity: 0;
-    white-space: nowrap;
-    transition: opacity 0.3s;
+.sidebarA a:hover .icon {
+    color: #ffffff;
 }
 
 /* Texto visible al desplegar */
-.sidebar.hovered a .text {
-    opacity: 1;
+.sidebarA a .text {
+    margin-left: 10px;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease-in-out, margin-left 0.3s;
 }
+
+/* Texto visible al desplegar */
+.sidebarA.hovered a .text {
+    opacity: 1;
+    margin-left: 15px;
+}
+
+/* Contenedor */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding-bottom: 20px;
+}
+
+/* Eliminar los puntos de la lista */
+.lista-sidebar,
+.lista-sidebar li {
+    list-style: none !important; /* Forzar la eliminación */
+    margin: 0; /* Eliminar márgenes extra */
+    padding: 0; /* Eliminar relleno extra */
+}
+
+/* Estilo general para los elementos de la lista */
+.lista-sidebar .nav-item {
+    margin: 10px 0;
+    padding: 10px;
+    text-align: left;
+    list-style: none;
+}
+
+/* Estilo para los enlaces de navegación */
+.lista-sidebar .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.lista-sidebar .nav-link:hover {
+    background-color: #404854;
+    color: #ddd;
+    border-radius: 5px;
+}
+
+/* Estilo específico para el carrito */
+.lista-sidebar .nav-item.cart {
+    position: relative;
+}
+
+.lista-sidebar .nav-item.cart .nav-link {
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* Alinear el icono y el texto */
+.lista-sidebar .nav-link i {
+    margin-right: 8px;
+}
+
+/* Añadido: Iconos y ajuste final */
+.lista-sidebar .nav-link span.icon {
+    font-size: 20px;
+    color: #888;
+}
+
+.lista-sidebar .nav-link:hover span.icon {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+/* .contenedor{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+} */

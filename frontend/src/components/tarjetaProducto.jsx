@@ -30,10 +30,10 @@ function Tarjeta() {
     <div className="cardsM2">
        <h1>Productos</h1>
       <Container fluid="md" className="cards">
-      <Row className="g-3">
+      <Row className="g-3"> {/* Cambiado a g-3 para un espaciado más uniforme */}
   {productos.map((producto, index) => (
-    <Col xs={12} sm={6} md={4} lg={3} key={index}>
-      <Card className="custom-card" style={{ margin: '20px 0' }}>
+    <Col xs={12} sm={6} md={4} lg={4} key={index}> {/* Tres tarjetas por fila */}
+      <Card className="custom-card">
         <Card.Img
           className="custom-img"
           variant="top"
@@ -53,6 +53,7 @@ function Tarjeta() {
     </Col>
   ))}
 </Row>
+
 
       </Container>
     </div>
