@@ -10,6 +10,7 @@ import Sobre_nosotros from '../pages/sobre_nosotros';
 import CarritoPage from '../pages/carritoPage';
 import Paypalpage from '../pages/paypalpage';
 import PrivateRoute from '../components/PrivateRoutes';
+import Perfil from '../pages/perfil';
 const Routing = () => {
 
 return (
@@ -20,6 +21,7 @@ return (
         <Route path='/SobreNosotros' element={<Sobre_nosotros/>} />
         <Route path="/AdminTask"element={<PrivateRoute requiredRole="administrador"><AdminPage /></PrivateRoute>}/>
         <Route path='/search' element={<Search/>} />
+        <Route path="/Perfil" element={<Perfil />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path='/Contactanos' element={<Contactanos/>}/>
