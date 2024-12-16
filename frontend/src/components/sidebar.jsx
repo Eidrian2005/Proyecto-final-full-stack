@@ -13,36 +13,36 @@ const Sidebar = () => {
         <div 
             className={`sidebarA ${isHovered ? 'hovered' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
+            onMouseLeave={() => setIsHovered(false)}>
+
             <div className='contenedor'>
-            <a href="#">
             <p className="nav-item">
                 <Link to="/ListaDeseados" className="nav-link">
-                <span>      <FaHeart className={`heart-icon}`} /></span>
-
-                Lista de deseados
-                </Link>
-                </p>
-            </a>
-            <a href="#">
-            <p className="nav-item">
-                <Link to="/Login" className="nav-link">
-                Login
-                </Link>
-                </p>
-            </a>
-            <a href="#">
+                    <i class="fa-solid fa-heart"></i>
+                    <span className="text">Lista de deseados</span>
+               </Link>
+            </p>
+            
+            <p className="nav-item"><Link to="/Login" className="nav-link">Login</Link></p>
+        
+          
             <p className="nav-item cart">
                 <Link to="/carrito" className="nav-link">
-                <i className="fas fa-shopping-cart"></i>
+                    <i className="fas fa-shopping-cart"></i>
+                    <span className="text">Carrito</span>
                 </Link>
-                </p>
-            </a>
-            <Link to="/Pefil">
-                <span className="icon"><i class="fa-solid fa-user"></i></span>
+            </p>
+        
+    
+            <p className="nav-item">
+                <Link to="/perfil" className="nav-link">
+                <i class="fa-solid fa-user"></i>
                 <span className="text">Perfil</span>
-            </Link>
+                </Link>
+            </p>
+                {/* <span className="icon"></span> */}
+                {/* <span className="text">Perfil</span> */}
+       
             </div>
         </div>
     );
