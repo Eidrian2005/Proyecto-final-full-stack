@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import '../styles/sidebar.css'; // Import the CSS file
 // import '../styles/header.css'
 import { Link, useNavigate } from "react-router-dom";
-
+import { FaHeart } from 'react-icons/fa'; 
+import '../styles/btnListaDeseos.css';
 
 const Sidebar = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -18,7 +19,9 @@ const Sidebar = () => {
             <a href="#">
             <p className="nav-item">
                 <Link to="/ListaDeseados" className="nav-link">
-                Wishlist
+                <span>      <FaHeart className={`heart-icon}`} /></span>
+
+                Lista de deseados
                 </Link>
                 </p>
             </a>
@@ -36,10 +39,10 @@ const Sidebar = () => {
                 </Link>
                 </p>
             </a>
-            <a href="#">
-                <span className="icon">❓</span>
-                <span className="text">Ayuda</span>
-            </a>
+            <Link to="/Pefil">
+                <span className="icon"><i class="fa-solid fa-user"></i></span>
+                <span className="text">Perfil</span>
+            </Link>
             </div>
         </div>
     );
