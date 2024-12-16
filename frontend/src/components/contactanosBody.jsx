@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
-import FormLogin from './FormLogin';
 import FormContactanos from './Formcontactanos';
 
 const Contactanosbody = () => {
