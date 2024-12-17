@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope as faEnvelopeRegular } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 const AdminHeader = ({ onSearch, onGoHome }) => {
 
@@ -36,10 +37,10 @@ const AdminHeader = ({ onSearch, onGoHome }) => {
           <span className="notification-badge">{notificationCount}</span>
         )}
       </div>
-      <button className="btn btn-primary home-btn" onClick={onGoHome}>
+      <Link to="/" className="btn btn-primary home-btn" onClick={onGoHome}>
         <FontAwesomeIcon icon={faHome} className="me-2" />
         Página Principal
-      </button>
+      </Link>
     </header>
   );
 };

@@ -8,8 +8,16 @@
     background: linear-gradient(180deg, #2c2f33, #343a40); /* Fondo degradado */
     transition: width 0.3s ease-in-out;
     overflow: hidden;
-    z-index: 1000;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para un efecto flotante */
+    z-index: 999; /* Menor que el header */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebarA .contenedor {
+    margin-top: 80px; /* Incrementa el valor según necesites */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 20px;
 }
 
 /* Al pasar el mouse, el ancho cambia */
