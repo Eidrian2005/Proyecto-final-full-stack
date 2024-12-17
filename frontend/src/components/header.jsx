@@ -3,12 +3,17 @@ import "../styles/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import logoTipo from "../img/logo.png";
 
-
 const Header = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
     navigate("/search");
+  };
+
+  // Función para cerrar sesión
+  const cerrarSesion = () => {
+    localStorage.removeItem("token");
+    navigate("/Login"); // Redirigir a la página de inicio
   };
 
   return (
@@ -22,7 +27,7 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a onClick={handleSearch} className="nav-link">
+            <a onClick={handleSearch} className="nav-link" role="button">
               Search
             </a>
           </li>
@@ -36,8 +41,10 @@ const Header = () => {
               Contact
             </Link>
           </li>
-        
         </ul>
+        <button onClick={cerrarSesion} className="logout-button">
+          Cerrar Sesión
+        </button>
       </nav>
     </header>
   );

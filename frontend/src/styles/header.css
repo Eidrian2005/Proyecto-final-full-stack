@@ -69,6 +69,24 @@
   transform: translateY(-50%);
 } */
 
+
+.logout-button {
+  background-color: #f44336; /* Red background */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+
+
 /* Responsividad para móviles */
 @media (max-width: 768px) {
   .header .nav {
