@@ -1,5 +1,4 @@
-// Sidebar Component in React
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../styles/sidebar.css'; // Import the CSS file
 // import '../styles/header.css'
 import { Link, useNavigate } from "react-router-dom";
@@ -8,6 +7,14 @@ import '../styles/btnListaDeseos.css';
 
 const Sidebar = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        // Comprobamos si el usuario tiene un token válido almacenado
+        const token = localStorage.getItem('token');
+        const authenticated = localStorage.getItem('Autenticado');
+        setIsAuthenticated(!!token && authenticated === 'true');
+    }, []);
 
     return (
         <div 
@@ -18,13 +25,17 @@ const Sidebar = () => {
             <div className='contenedor'>
             <p className="nav-item">
                 <Link to="/ListaDeseados" className="nav-link">
-                    <i class="fa-solid fa-heart"></i>
+                    <i className="fa-solid fa-heart"></i>
                     <span className="text">Lista de deseados</span>
                </Link>
             </p>
             
-            <p className="nav-item"><Link to="/Login" className="nav-link">Login</Link></p>
-        
+            <p className="nav-item">
+                    <Link to={isAuthenticated ? "/Perfil" : "/Login"} className="nav-link">
+                        <i className={`fa-solid ${isAuthenticated ? 'fa-user' : 'fa-sign-in-alt'}`}></i>
+                        <span className="text">{isAuthenticated ? 'Perfil' : 'Login'}</span>
+                    </Link>
+                </p>        
           
             <p className="nav-item cart">
                 <Link to="/carrito" className="nav-link">
@@ -32,17 +43,6 @@ const Sidebar = () => {
                     <span className="text">Carrito</span>
                 </Link>
             </p>
-        
-    
-            <p className="nav-item">
-                <Link to="/perfil" className="nav-link">
-                <i class="fa-solid fa-user"></i>
-                <span className="text">Perfil</span>
-                </Link>
-            </p>
-                {/* <span className="icon"></span> */}
-                {/* <span className="text">Perfil</span> */}
-       
             </div>
         </div>
     );
