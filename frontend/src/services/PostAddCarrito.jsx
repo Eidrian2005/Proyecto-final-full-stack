@@ -1,9 +1,15 @@
 async function Post_carrito(carritoData) {
     try {
+        const token = localStorage.getItem('token'); // Obtén el token almacenado
+
+        if (!token) {
+            throw new Error('No se encontró el token de autenticación');
+        }
             const response = await fetch("http://localhost:3000/carrito", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(carritoData)
         });
