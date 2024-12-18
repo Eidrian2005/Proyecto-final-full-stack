@@ -1,49 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { GetCliente } from '../services/GetClientes';
-import { Card, Col, Container } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import '../styles/userProfile.css';
 
-export default function UserProfile() {
-  const [cliente, setCliente] = useState(null); // Cambiado a un único cliente
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const loadClient = async () => {
-      try {
-        const user = await GetCliente();
-        setCliente(user);
-      } catch (error) {
-        setError("No se pudo cargar la información del usuario.");
-        console.error(error);
-      }
-    };
-    loadClient();
-  }, []);
-
-  if (error) {
-    return <div className="text-danger">{error}</div>;
-  }
-
-  if (!cliente) {
-    return <div>Cargando información del usuario...</div>;
-  }
-
+const ProfilePage = () => {
   return (
-    <Container className="mt-4">
-      <Col xs={12} sm={6} md={4} lg={3} className="mx-auto">
-        <Card>
-          <Card.Img
-            variant="top"
-            src={cliente.imagen}
-            alt={cliente.nombre || "Imagen del usuario"}
-            id="imagen"
-          />
-          <Card.Body>
-            <Card.Title>Nombre: {cliente.usuario}</Card.Title>
-            <Card.Text>Dirección: {cliente.direccion}</Card.Text>
-            <Card.Text>Correo: {cliente.correo}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+    <Container fluid className="profile-container">
+      <Row>
+        {/* Sección Izquierda */}
+        <Col md={4} className="profile-left">
+          <div className="profile-photo-container">
+            <Image
+              src="https://via.placeholder.com/150"
+              roundedCircle
+              className="profile-photo"
+            />
+          </div>
+          <h5 className="profile-username">Nombre de Usuario</h5>
+          <Button variant="outline-dark" className="profile-edit-btn">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Col>
+
+        {/* Sección Derecha */}
+        <Col md={8} className="profile-right">
+          <h6 className="profile-section-title">Dirección</h6>
+          <Card className="profile-card">
+            <Card.Text>
+              Texto de ejemplo
+            </Card.Text>
+          </Card>
+          <div className="profile-logout-container">
+            <Button variant="outline-danger" className="profile-logout-btn">
+              <FontAwesomeIcon icon={faSignOutAlt} /> Cerrar sesión
+            </Button>
+          </div>
+        </Col>
+      </Row>
     </Container>
   );
-}
+};
+
+export default ProfilePage;
