@@ -13,7 +13,7 @@ const Header = () => {
   // Función para cerrar sesión
   const cerrarSesion = () => {
     localStorage.removeItem("token");
-    navigate("/Login"); // Redirigir a la página de inicio
+    navigate("/"); // Redirigir a la página de inicio
   };
 
   return (

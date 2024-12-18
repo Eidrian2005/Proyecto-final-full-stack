@@ -4,20 +4,82 @@
   color: #f8f8f8;
   min-height: 100vh; /* Asegura que el fondo ocupe toda la pantalla */
   display: flex; /* Centra el contenido */
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center; /* Centra verticalmente */
   align-items: center; /* Centra horizontalmente */
 }
 
 .about-us-header h1 {
+  padding: 3%;
   font-size: 3rem;
   color: #cda34f;
   margin-bottom: 20px;
 }
 
 .about-us-header p {
+  width: 60%;
   font-size: 1.2rem;
   color: #dddddd;
   margin-top: 20px;
+  margin-left: 21%;
   line-height: 1.6;
+}
+
+
+
+
+
+/* Sidebar Styles */
+.home-container {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.main-content {
+  flex: 1;
+  /* padding: 20px; */
+  background: linear-gradient(45deg, #876d39, #4e4e4e);
+  min-height: 100vh;
+}
+
+.header-overlay {
+  background-color: #343a40;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+  z-index: 1000;
+}
+
+.header-overlay.hidden {
+  display: none;
+}
+
+/* Placeholder for empty state */
+.content-section {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.footer-section {
+  text-align: center;
+  padding: 10px;
+}
+
+.pagination-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  background-color: #0056b3;
 }
