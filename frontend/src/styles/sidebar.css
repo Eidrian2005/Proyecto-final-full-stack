@@ -140,6 +140,19 @@
 
 
 
+.admin-btn {
+    margin-top: 10px;
+}
+
+.admin-icon {
+    color: gold;
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.nav-item .text {
+    font-weight: bold;
+}
 
 
 
