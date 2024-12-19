@@ -4,6 +4,8 @@ import { GetCarrito } from '../services/GetCarrito';
 import { GetProducto } from '../services/GetProducto';
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
+import FormPaypal from './FormPaypal'; // Importar el componente PayPal
+
 const TotalCarrito = () => {
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
@@ -11,31 +13,27 @@ const TotalCarrito = () => {
 
   const fetchCarrito = async () => {
     try {
-      const carritoData = await GetCarrito(); // Productos en el carrito
-      const productosData = await GetProducto(); // Detalles de los productos
+      const carritoData = await GetCarrito();
+      const productosData = await GetProducto();
 
-      // Combinar datos del carrito con detalles de productos
       const carritoConDetalles = carritoData.map((itemCarrito) => {
-        // Encontrar el producto correspondiente usando id_producto
         const productoDetalles = productosData.find(
           (producto) => producto.id === itemCarrito.id_producto
         );
 
-        // Asegúrate de que los detalles del producto sean correctos
         if (!productoDetalles) {
           console.error(`Producto con id ${itemCarrito.id_producto} no encontrado`);
         }
 
         return {
           ...itemCarrito,
-          nombre: productoDetalles?.nombre_producto || 'Producto desconocido', // Cambié a nombre_producto
+          nombre: productoDetalles?.nombre_producto || 'Producto desconocido',
           precio: productoDetalles?.precio || 0,
         };
       });
 
       setCarrito(carritoConDetalles);
 
-      // Calcular el total
       const totalPago = carritoConDetalles.reduce(
         (acc, producto) => acc + producto.precio * producto.cantidad,
         0
@@ -53,7 +51,6 @@ const TotalCarrito = () => {
     }
   };
 
-  // Llamar a `fetchCarrito` al montar el componente
   useEffect(() => {
     fetchCarrito();
   }, []);
@@ -71,7 +68,7 @@ const TotalCarrito = () => {
           <ul className="carrito-lista">
             {carrito.map((producto, index) => (
               <li key={index} className="carrito-item">
-                <p>{producto.nombre}</p> {/* Aquí mostramos el nombre correcto */}
+                <p>{producto.nombre}</p>
                 <p>{`$${producto.precio}`}</p>
                 <p>Cantidad: {producto.cantidad}</p>
               </li>
@@ -83,9 +80,7 @@ const TotalCarrito = () => {
             <p>{`$${total.toFixed(2)}`}</p>
           </div>
 
-          <Link to="/pago">
-      <button>Comprar</button>
-      </Link>
+          <FormPaypal total={total} /> {/* Pasar el total al componente PayPal */}
         </>
       )}
     </div>
