@@ -41,7 +41,7 @@ const Sidebar = () => {
             <div className='contenedor'>
                 {/* Lista de deseados */}
                 <p className="nav-item">
-                    <Link to="/ListaDeseados" className="nav-link">
+                    <Link to="/lista_de_deseados" className="nav-link">
                         <i className="fa-solid fa-heart"></i>
                         <span className="text">Lista de deseados</span>
                     </Link>
