@@ -11,6 +11,9 @@ import CarritoPage from '../pages/carritoPage';
 import Paypalpage from '../pages/paypalpage';
 import PrivateRoute from '../components/PrivateRoutes';
 import Perfil from '../pages/perfil';
+import ListaDeseoPage from '../pages/listaDeseoPage';
+
+
 const Routing = () => {
 
 return (
@@ -26,6 +29,7 @@ return (
         <Route path="/Login" element={<Login />} />
         <Route path='/Contactanos' element={<Contactanos/>}/>
         <Route path='/carrito' element={<CarritoPage/>}/>
+        <Route path='/lista_de_deseados' element={<ListaDeseoPage/>}/>
     </Routes>
     </Router>
 );
