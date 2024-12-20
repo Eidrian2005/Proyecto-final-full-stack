@@ -8,7 +8,6 @@ import { decode } from 'jwt-js-decode';
 import logoTipo from "../img/logo.png";
 
 function FormLogin() {
-
   const { login } = useContext(ProductContext);
   const navigate = useNavigate()
     const [usuario, setUsername] = useState('');
@@ -29,28 +28,23 @@ function FormLogin() {
       e.preventDefault();
     
       try {
-        const dataToken = await Post_auth(usuario, contraseña); // Llama a la función de autenticación
-    
-        if (dataToken && dataToken.token) {
-          // Decodificar el token
-          const { payload } = decode(dataToken.token); // Extrae el payload usando jwt-js-decode
-          const rol = payload.descripcion; // Asegúrate de que esta propiedad exista en el token
-    
-          localStorage.setItem("Autenticado", "true");
-    
-          toast.success("Bienvenido", { autoClose: 700 });
-    
-          // Redirigir según el rol
-          setTimeout(() => {
-            if (rol === "administrador") {
-              navigate("/AdminTask");
-            } else {
-              navigate("/");
-            }
-          }, 1000);
-    
-          login(payload); // Lógica para manejar inicio de sesión global
-        } else {
+        const dataToken = await Post_auth(usuario, contraseña);
+      if (dataToken && dataToken.token) {
+        const { payload } = decode(dataToken.token);
+        const rol = payload.descripcion;
+
+        toast.success("Bienvenido", { autoClose: 700 });
+
+        setTimeout(() => {
+          if (rol === "administrador") {
+            navigate("/AdminTask");
+          } else {
+            navigate("/");
+          }
+        }, 1000);
+
+        login({ descripcion: rol }); // Lógica para manejar inicio de sesión global
+        } else {  
           toast.warning("Usuario o contraseña incorrectos");
         }
       } catch (error) {

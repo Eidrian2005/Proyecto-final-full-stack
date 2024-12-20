@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const { Clientes } = require("../models");
 
 //----------------------Get------------------------//
@@ -39,12 +40,14 @@ const post_cliente = async (req, res) => {
   try {
     const { direccion, imagen, usuario, correo, contraseña } = req.body;
 
+    const esContrasenaEncriptada = await bcrypt.hash(contraseña, 10); 
+
     const nuevoCliente = await Clientes.create({
       direccion,
       imagen,
       usuario,
       correo,
-      contraseña,
+      contraseña: esContrasenaEncriptada,
     });
 
     res.status(201).json({

@@ -7,14 +7,15 @@ const PrivateRoute = ({ children, requiredRole }) => {
   const { user } = useContext(ProductContext);
 
   if (!user) {
+    // No autenticado
     return <Navigate to="/login" />;
   }
 
   if (requiredRole && user.descripcion !== requiredRole) {
+    // Autenticado pero sin rol adecuado
     return <Navigate to="/" />;
   }
 
-  return children;
+  return children; // Autenticado y con rol adecuado
 };
-  
-  export default PrivateRoute;
+export default PrivateRoute;

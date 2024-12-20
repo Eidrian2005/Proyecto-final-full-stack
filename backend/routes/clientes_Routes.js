@@ -6,7 +6,7 @@ const {verificarToken} = require("../middlewares/authMiddleware")
 
 router.get("/" , verificarToken, clientes_controller.get_all_clientes);
 router.get("/:id" ,  verificarToken, clientes_controller.get_cliente_by_id);
-router.post("/" ,verificarToken,  clientes_controller.post_cliente);
+router.post("/" ,  clientes_controller.post_cliente);
 router.put("/:id" , verificarToken, clientes_controller.put_cliente);
 router.delete("/:id" , verificarToken, clientes_controller.delete_cliente);
 module.exports = router;
