@@ -1,5 +1,6 @@
-import React, { createContext, useState, useCallback, useContext, useEffect } from "react";
+import React, { createContext, useState, useCallback, useEffect } from "react";
 import { decode } from "jwt-js-decode";
+import Cookies from "js-cookie";
 import { Getproductos } from "../services/GetProductos";
 
 export const ProductContext = createContext();
@@ -19,37 +20,34 @@ export function ProductProvider({ children }) {
 
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem("token", userData.token);
+    Cookies.set("token", userData.token, { expires: 7, secure: true });
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("token");
+    Cookies.remove("token");
   };
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = Cookies.get("token");
     if (storedToken) {
       try {
-        // Verificar si el token tiene el formato correcto
         if (storedToken.split(".").length === 3) {
           const { payload } = decode(storedToken);
-
-          // Validar si el token ha expirado
           const isTokenValid = payload.exp * 1000 > Date.now();
           if (!isTokenValid) {
             console.warn("Token expirado, eliminando...");
-            localStorage.removeItem("token");
+            Cookies.remove("token");
           } else {
             setUser({ ...payload, token: storedToken });
           }
         } else {
           console.error("Formato de token inválido");
-          localStorage.removeItem("token");
+          Cookies.remove("token");
         }
       } catch (error) {
         console.error("Error decoding token:", error);
-        localStorage.removeItem("token");
+        Cookies.remove("token");
       }
     }
   }, []);
