@@ -3,40 +3,47 @@
   text-align: center;
 }
 
-.cards {
+.cardS {
   display: flex;
   justify-content: center;
-  padding: 20px; /* Ajustado para evitar demasiado espacio */
+  width: 100%; /* Cambiado para asegurar espacio uniforme */
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente */
+  padding: 20px;
+  gap: 20px; /* Espacio entre tarjetas */
 }
 
-.custom-card {
-  margin-bottom: 20px; /* Reduce el margen inferior */
+.custom-carD {
+  margin-bottom: 20px;
+  margin-right: 20px; /* Espaciado adicional entre tarjetas horizontalmente */
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
+  max-width: 300px; /* Asegura un tamaño uniforme */
+  flex: 1 1 calc(33.33% - 40px); /* Ocupa un ancho relativo y deja espacio */
 }
 
-.custom-img {
+
+.custom-imG {
   height: 140px;
   object-fit: contain;
   padding: 10px;
 }
 
-.product-title {
+.product-titl {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-.product-sold {
+.product-solD {
   font-size: 0.9rem;
   color: gray;
   margin-bottom: 8px;
 }
 
-.product-price {
+.product-pricE {
   font-size: 1.5rem;
   font-weight: bold;
   color: #2c3e50;
@@ -48,4 +55,61 @@
   justify-content: space-around;
   align-items: center;
   margin-top: auto;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .cardsM2 {
+    padding: 40px;
+  }
+
+  .custom-carD {
+    margin-bottom: 15px;
+    max-width: 100%; /* Las tarjetas ocupan el ancho completo */
+  }
+
+  .product-titl {
+    font-size: 1rem;
+  }
+
+  .product-pricE {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsM2 {
+    padding: 20px;
+  }
+
+  .custom-imG {
+    height: 100px; /* Reduce el tamaño de la imagen */
+  }
+
+  .product-titl {
+    font-size: 0.9rem;
+  }
+
+  .product-pricE {
+    font-size: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column; /* Los botones se apilan verticalmente */
+    gap: 10px; /* Espaciado entre botones */
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .custom-carD {
+    flex: 1 1 calc(50% - 20px); /* Dos tarjetas por fila */
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-carD {
+    flex: 1 1 100%; /* Una tarjeta por fila */
+  }
 }
