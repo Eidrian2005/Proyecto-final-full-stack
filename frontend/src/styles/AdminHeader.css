@@ -1,22 +1,23 @@
 /* Base del header */
 .admin-header {
   width: 100%;
-  height: 70px;
+  height: auto; /* Altura ajustable para dispositivos pequeños */
   position: fixed;
   top: 0;
   z-index: 1050;
   background-color: #343a40;
   color: #f8f9fa;
   display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 10px 15px; /* Padding dinámico */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Título del header */
 .header-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 0;
   text-align: center;
 }
@@ -69,52 +70,51 @@
   transform: scale(1.05);
 }
 
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 576px) {
-  .home-btn {
-    width: auto; /* Se ajusta automáticamente al contenido */
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente en móviles */
-    padding: 6px 12px; /* Menos padding en pantallas pequeñas */
-    margin-top: 10px; /* Añade espacio entre elementos */
-  }
-}
-
-
-/* Ajustes responsivos */
+/* Ajustes para pantallas medianas */
 @media (max-width: 768px) {
   .admin-header {
-    flex-direction: column;
+    flex-direction: column; /* Cambia a diseño en columna */
     align-items: flex-start;
     height: auto;
-    padding: 10px 15px;
+    padding: 10px;
   }
 
   .header-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* Ajusta el tamaño del título */
+    text-align: left; /* Alinea el título a la izquierda */
+    width: 100%; /* Ocupa todo el ancho */
+    margin-bottom: 10px; /* Espacio entre el título y otros elementos */
   }
 
   .search-container {
-    width: 100%;
-    margin-top: 10px;
+    width: 100%; /* Barra de búsqueda ocupa todo el ancho */
+    margin-bottom: 10px;
   }
 
   .home-btn {
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
+    width: 100%; /* Botón ocupa todo el ancho */
+    justify-content: center; /* Centra el texto */
+    margin-bottom: 10px; /* Espaciado entre elementos */
   }
 }
 
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 576px) {
   .header-title {
-    font-size: 1rem;
-  }
-
-  .search-container {
-    width: 100%;
+    font-size: 1.1rem; /* Reduce el tamaño del título */
+    text-align: center; /* Centra el título en dispositivos pequeños */
   }
 
   .search-input {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Reduce el tamaño del texto en la barra */
+  }
+
+  .home-btn {
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente del botón */
+    padding: 6px 12px; /* Menos padding en móviles */
+  }
+
+  .search-container {
+    margin-bottom: 15px; /* Espaciado adicional */
   }
 }
