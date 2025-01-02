@@ -1,0 +1,134 @@
+/* Contenedor principal del componente ShowUsers */
+.show-users-container {
+  margin-top: 80px; /* Espacio para evitar superposición con el header */
+  padding: 20px;
+  background-color: #343a40; /* Fondo oscuro consistente con el sidebar y header */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #f8f9fa; /* Texto claro */
+  overflow-x: auto; /* Scroll horizontal si es necesario */
+}
+
+/* Título del componente */
+.show-users-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f8f9fa;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #495057;
+  padding-bottom: 10px;
+}
+
+/* Tabla de usuarios */
+.show-users-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #495057; /* Fondo oscuro intermedio */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.show-users-container th,
+.show-users-container td {
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #6c757d;
+  color: #f8f9fa; /* Texto claro */
+}
+
+.show-users-container th {
+  background-color: #212529; /* Fondo oscuro más intenso */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.show-users-container tr:nth-child(even) {
+  background-color: #343a40; /* Fondo alternado oscuro */
+}
+
+.show-users-container tr:hover {
+  background-color: #495057;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón de acción (Eliminar usuario) */
+.show-users-container .btn-danger {
+  background-color: #e74c3c;
+  border: none;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.show-users-container .btn-danger:hover {
+  background-color: #c0392b;
+  transform: scale(1.1);
+}
+
+.show-users-container .btn-danger:focus {
+  outline: none;
+}
+
+.show-users-container .btn-danger svg {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .show-users-container {
+    padding: 15px;
+  }
+
+  .show-users-title {
+    font-size: 1.3rem;
+  }
+
+  .show-users-container table {
+    font-size: 0.9rem;
+  }
+
+  .show-users-container th,
+  .show-users-container td {
+    padding: 10px;
+  }
+
+  .show-users-container .btn-danger {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .show-users-container {
+    padding: 10px;
+  }
+
+  .show-users-title {
+    font-size: 1.2rem;
+  }
+
+  .show-users-container table {
+    font-size: 0.8rem;
+  }
+
+  .show-users-container th,
+  .show-users-container td {
+    padding: 8px;
+  }
+
+  .show-users-container .btn-danger {
+    font-size: 0.7rem;
+    padding: 4px 6px;
+  }
+}

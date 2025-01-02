@@ -54,11 +54,30 @@ module.exports = (sequelize) => {
       type:DataTypes.DECIMAL,
       allowNull: false
     }
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'Pedidos',
-    tableName: "Pedidos",
+    tableName: 'Pedidos',
     timestamps: true,
-  });
+    hooks: {
+      async afterCreate(pedido, options) {
+        const { Historial_compras, Historial_ventas } = sequelize.models;
+
+        // Registrar el historial de compras
+        await Historial_compras.create({
+          id_pedidos: pedido.id,
+          fecha_compra: new Date(), // Fecha actual
+        });
+
+        // Registrar el historial de ventas
+        await Historial_ventas.create({
+          id_pedidos: pedido.id,
+          fecha_venta: new Date(), // Fecha actual
+        });
+      },
+    },
+  }
+);
   return Pedidos;
 };
