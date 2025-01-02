@@ -60,7 +60,7 @@ const Homebody = () => {
           {/* Tarjetas de productos */}
           <div className="tarjetas-container">
             <Tarjeta />
-            <ImgMediaCard/>
+            {/* <ImgMediaCard/> */}
       
           </div>
         </div>
