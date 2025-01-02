@@ -27,7 +27,7 @@
 
 .custom-imG {
   height: 140px;
-  object-fit: contain;
+  /* object-fit: contain; */
   padding: 10px;
 }
 
