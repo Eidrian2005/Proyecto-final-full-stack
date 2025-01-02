@@ -5,7 +5,7 @@ import { faBars, faPlus,faUser, faHistory } from '@fortawesome/free-solid-svg-ic
 import ModalCategoria from "./AgregarCategoria";
 import ModalProducto from "./AgregarProductos";
 
-const AdminSidebar = (agregarCategoria) => {
+const AdminSidebar = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -44,6 +44,12 @@ const AdminSidebar = (agregarCategoria) => {
         <button
           className="btn btn-dark w-100 text-start d-flex align-items-center mb-3 px-3"
           onClick={() => onNavigate('historial-compras')}
+        >
+          
+        </button>
+        <button
+          className="btn btn-dark w-100 text-start d-flex align-items-center mb-3 px-3"
+          onClick={() => onNavigate("usuarios")}
         >
           <FontAwesomeIcon icon={faUser} className="me-2" />
           Usuarios
