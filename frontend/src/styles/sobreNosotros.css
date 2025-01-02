@@ -39,7 +39,7 @@
 .main-content {
   flex: 1;
   /* padding: 20px; */
-  background: linear-gradient(45deg, #876d39, #4e4e4e);
+  /* background: linear-gradient(45deg, #876d39, #4e4e4e); */
   min-height: 100vh;
 }
 
