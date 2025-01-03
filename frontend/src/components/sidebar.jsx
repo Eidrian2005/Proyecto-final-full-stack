@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
 import { FaCrown } from "react-icons/fa";
@@ -6,11 +6,16 @@ import { ProductContext } from "./ProductContext";
 
 const Sidebar = () => {
   const { user } = useContext(ProductContext);
+  const [isHovered, setIsHovered] = useState(false); // Estado para detectar si el mouse está sobre el sidebar
   const isAuthenticated = !!user; // Verificar si el usuario está autenticado
   const isAdmin = user?.descripcion === "administrador"; // Verificar si el usuario es administrador
 
   return (
-    <div className="sidebarA">
+    <div
+      className={`sidebarA ${isHovered ? "hovered" : ""}`}
+      onMouseEnter={() => setIsHovered(true)} // Detectar cuando el mouse entra
+      onMouseLeave={() => setIsHovered(false)} // Detectar cuando el mouse sale
+    >
       <div className="contenedor">
         <p className="nav-item">
           <Link to="/lista_de_deseados" className="nav-link">
@@ -19,7 +24,6 @@ const Sidebar = () => {
           </Link>
         </p>
 
-        {/* Verificar si el usuario está autenticado */}
         <p className="nav-item">
           <Link to={isAuthenticated ? "/Perfil" : "/Login"} className="nav-link">
             <i className={`fa-solid ${isAuthenticated ? "fa-user" : "fa-sign-in-alt"}`}></i>

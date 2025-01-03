@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/header.css";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import logoTipo from "../img/logo.png";
 
 const Header = () => {
@@ -12,8 +13,9 @@ const Header = () => {
 
   // Función para cerrar sesión
   const cerrarSesion = () => {
-    localStorage.removeItem("token");
-    navigate("/"); // Redirigir a la página de inicio
+    // Elimina la cookie que almacena el token
+    Cookies.remove("token");
+    navigate("/login"); // Redirigir a la página de inicio
   };
 
   return (
