@@ -3,7 +3,6 @@ import { Button, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Gethistorial } from "../services/GetHistorial";
-import { deleteHistorialCompra } from "../services/DeleteHistorialCompra"; // Aquí deberías tener el servicio para eliminar
 
 export default function ShowHistorialCompras() {
   const [historial, setHistorial] = useState([]);
@@ -13,7 +12,7 @@ export default function ShowHistorialCompras() {
   }, []);
 
   async function loadHistorial() {
-    const fetchedHistorial = await getHistorialCompras(); // Cargar los datos de historial
+    const fetchedHistorial = await Gethistorial(); // Cargar los datos de historial
     setHistorial(fetchedHistorial);
   }
 

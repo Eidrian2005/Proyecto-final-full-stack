@@ -4,7 +4,7 @@ import ShowProducts from './ShowProducts';
 import { Row, Col } from 'react-bootstrap';
 import AdminHeader from './AdminHeader';
 import ShowUsers from './usuarios';
-
+import ShowHistorialCompras from "./historial";
 export default function BodyAdmin() {
   const [currentView, setCurrentView] = useState("productos");
 
@@ -16,10 +16,13 @@ export default function BodyAdmin() {
     switch (currentView) {
       case "usuarios":
         return <ShowUsers />;
+      case "historial-compras":  // Cambiar a "historial-compras"
+        return <ShowHistorialCompras />;
       default:
         return <ShowProducts />;
     }
   };
+  
 
   return (
     <div>
