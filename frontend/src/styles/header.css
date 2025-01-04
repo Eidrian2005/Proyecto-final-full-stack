@@ -4,37 +4,39 @@
 }
 
 .header {
-  height: 60px;
+  height: auto; /* Deja que el contenido defina la altura */
   background-color: #fff;
   border-bottom: 1px solid #ddd;
-  padding: 10px 20px;
-  margin-left: 20%;
+  padding: 10px 15px; /* Espaciado reducido */
+  margin: 0 auto; /* Centra el header horizontalmente */
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Ajusta el contenido entre los extremos */
   border-radius: 10px;
   position: relative;
+  max-width: 80%; /* Limita el ancho del header */
 }
 
 .header .nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 15px; /* Reduce el espacio entre los elementos */
 }
 
 .header .nav-list {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 15px; /* Reduce el espacio entre las opciones */
   margin: 0;
   padding: 0;
 }
 
 .image {
-  width: 75px;
-  height: 75px; /* Aseguramos que sea un cuadrado */
-  border-radius: 50%; /* Hace que sea completamente circular */
-  object-fit: cover; /* Ajusta el contenido dentro del contenedor */
+  width: 50px; /* Reduce el tamaño del logo */
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .header .nav-item {
@@ -44,8 +46,8 @@
 
 .header .nav-link {
   text-decoration: none;
-  color: #333; /* Color negro por defecto */
-  font-size: 16px;
+  color: #333;
+  font-size: 14px; /* Reduce el tamaño de fuente */
   display: flex;
   align-items: center;
   gap: 5px;
@@ -54,53 +56,56 @@
 }
 
 .header .nav-link:hover {
-  color: #007bff; /* Azul solo en hover */
+  color: #007bff;
 }
 
 .header .nav-link i {
-  font-size: 16px;
+  font-size: 14px; /* Reduce el tamaño del ícono */
 }
 
-/* Estilos específicos para el carrito */
-/* .header .cart {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-} */
-
-
+/* Botón de cierre de sesión */
 .logout-button {
-  background-color: #f44336; /* Red background */
+  background-color: #f44336;
   color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 8px 12px; /* Reduce el tamaño del botón */
+  font-size: 14px; /* Reduce el tamaño de fuente */
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: #d32f2f; /* Darker red on hover */
+  background-color: #d32f2f;
 }
-
-
 
 /* Responsividad para móviles */
 @media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Acomoda los elementos en columna */
+    padding: 10px;
+    max-width: 100%;
+  }
+
   .header .nav {
     flex-direction: column;
+    gap: 10px; /* Reduce el espacio entre los elementos */
   }
 
   .header .nav-list {
     flex-direction: column;
-    gap: 20px;
+    gap: 5px; /* Reduce el espacio entre los enlaces */
   }
 
-  .header .cart {
-    right: 10px;
-    top: 10px;
-    transform: none;
+  .image {
+    width: 40px; /* Logo más pequeño en móviles */
+    height: 40px;
+  }
+
+  .logout-button {
+    width: 100%; /* Botón ocupa todo el ancho */
+    text-align: center;
+    font-size: 12px; /* Fuente más pequeña */
+    padding: 8px 0;
   }
 }
