@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import '../styles/userProfile.css';
 import Header from './header';
+import Sidebar from './sidebar';
 
 const ProfilePage = () => {
   return (
     <div>
+      
        <Header />
+       <Sidebar/>
     <Container fluid className="profile-container">
       
       <Row>

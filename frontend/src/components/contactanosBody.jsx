@@ -2,10 +2,13 @@ import React from 'react';
 import '../styles/home.css'; // Archivo CSS para estilos
 import Header from './header';
 import FormContactanos from './Formcontactanos';
+import Sidebar from './sidebar';
+
 
 const Contactanosbody = () => {
   return (
     <div className="home-container">
+      <Sidebar/>
       {/* Sección de encabezado */}
       <div className="header-section">
         <div className="header-overlay">
