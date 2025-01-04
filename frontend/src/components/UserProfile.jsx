@@ -3,10 +3,14 @@ import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import '../styles/userProfile.css';
+import Header from './header';
 
 const ProfilePage = () => {
   return (
+    <div>
+       <Header />
     <Container fluid className="profile-container">
+      
       <Row>
         {/* Sección Izquierda */}
         <Col md={4} className="profile-left">
@@ -39,6 +43,7 @@ const ProfilePage = () => {
         </Col>
       </Row>
     </Container>
+ </div>
   );
 };
 
