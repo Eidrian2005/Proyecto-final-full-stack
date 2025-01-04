@@ -1,63 +1,122 @@
-    /* Contenedor principal */
-    .profile-container {
-        border: 1px solid black;
-        border-radius: 10px;
-        padding: 20px;
-        height: 100vh;
-    }
-    
-    /* Sección izquierda */
+/* Contenedor principal */
+.profile-container {
+    background: linear-gradient(45deg, #876d39, #4e4e4e); /* Color de fondo general */
+    padding: 20px;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    position: relative; /* Mantener posicionamiento para los hijos */
+  }
+  
+  .profile-left {
+    background-color: grey;
+    margin-left: 30%;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-photo-container {
+    margin-bottom: 15px;
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border: 4px solid #007bff; /* Borde azul */
+  }
+  
+  .profile-username {
+    font-weight: bold;
+    color: #343a40; /* Color gris oscuro */
+    margin-top: 10px;
+  }
+  
+  .profile-edit-btn {
+    margin-top: 15px;
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  
+  .profile-right {
+    width: 600px;
+    position: absolute;
+    top: 60%; /* Posición inicial */
+    left: 22%;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-section-title {
+    font-weight: bold;
+    color: #007bff; /* Azul */
+    margin-bottom: 10px;
+  }
+  
+  .profile-card {
+    border: none;
+    background-color: #f1f1f1; /* Gris claro */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-logout-container {
+    text-align: right;
+  }
+  
+  .profile-logout-btn {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  
+  /* Media Queries para pantallas pequeñas */
+  @media (max-width: 767px) {
     .profile-left {
-        text-align: center;
-        border-right: 1px solid black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      margin-left: auto; /* Centrar horizontalmente */
+      margin-right: auto; /* Centrar horizontalmente */
+      width: 90%; /* Ancho del 90% */
+      position: relative; /* Reseteo de posición fija */
+      top: 0; /* Sin desplazamiento vertical */
     }
-    
-    .profile-photo-container {
-        margin-bottom: 20px;
-    }
-    
-    .profile-photo {
-        width: 150px;
-        height: 150px;
-        border: 2px solid black;
-    }
-    
-    .profile-username {
-        margin: 10px 0;
-    }
-    
-    .profile-edit-btn {
-        margin-top: 10px;
-    }
-    
-    /* Sección derecha */
+  
     .profile-right {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+      position: relative; /* Cambiar a relativo */
+      width: 90%; /* Ancho del 90% */
     
-    .profile-section-title {
-        font-weight: bold;
+      margin-right: auto; /* Centrar horizontalmente */
+      top: 20px; /* Pequeño margen superior */
+      left: 0; /* Resetear desplazamiento */
     }
-    
-    .profile-card {
-        border-radius: 20px;
-        border: 1px solid black;
-        padding: 15px;
+  }
+  
+  /* Media Queries para pantallas medianas */
+ /* Media Queries para pantallas medianas */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .profile-left {
+      width: 80%; /* Ancho reducido */
+      margin-left: auto; /* Centrar horizontalmente */
+      margin-right: auto;
+      margin-bottom: 20px; /* Espaciado inferior para evitar superposición */
+      position: relative; /* Cambiar a relativo */
+      top: 0; /* Reseteo de posición */
     }
-    
-    .profile-logout-container {
-        text-align: right;
-        margin-top: auto;
+  
+    .profile-right {
+      width: 70%; /* Ancho reducido */
+      margin-left:10%; /* Centrar horizontalmente */
+      margin-right: auto;
+      margin-top: 20px; /* Espaciado superior para evitar superposición */
+      position: relative; /* Cambiar a relativo */
+      top: 0; /* Reseteo de posición */
     }
-    
-    .profile-logout-btn {
-        margin-top: 20px;
-    }
-    
+  }
+  
+  
+  
+ 
+  
+  /* position: absolute;
+  top: 70%;
+  left: 22%; */
