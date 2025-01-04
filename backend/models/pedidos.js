@@ -7,9 +7,6 @@ module.exports = (sequelize) => {
       //relacion con historial ventas
       this.hasMany(models.Historial_compras, {foreignKey: 'id_pedidos'});
 
-      //relacion con historial ventas
-      this.hasMany(models.Historial_ventas, {foreignKey: 'id_pedidos'})
-
       // Relación con Productos
       this.belongsTo(models.Productos, {foreignKey: 'id_producto'})
 
@@ -62,18 +59,12 @@ module.exports = (sequelize) => {
     timestamps: true,
     hooks: {
       async afterCreate(pedido, options) {
-        const { Historial_compras, Historial_ventas } = sequelize.models;
+        const { Historial_compras } = sequelize.models;
 
         // Registrar el historial de compras
         await Historial_compras.create({
           id_pedidos: pedido.id,
           fecha_compra: new Date(), // Fecha actual
-        });
-
-        // Registrar el historial de ventas
-        await Historial_ventas.create({
-          id_pedidos: pedido.id,
-          fecha_venta: new Date(), // Fecha actual
         });
       },
     },

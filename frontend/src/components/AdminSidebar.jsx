@@ -34,16 +34,17 @@ const AdminSidebar = ({ onNavigate }) => {
 
 
         <button
-          className="btn btn-dark w-100 text-start d-flex align-items-center mb-3 px-3"
-          onClick={() => onNavigate('historial-compras')}
-        >
-          <FontAwesomeIcon icon={faHistory} className="me-2" />
-          Historial de Compras
-        </button>
+  className="btn btn-dark w-100 text-start d-flex align-items-center mb-3 px-3"
+  onClick={() => onNavigate('historial-compras')}  // Asegúrate que sea 'historial-compras'
+>
+  <FontAwesomeIcon icon={faHistory} className="me-2" />
+  Historial de Compras
+</button>
+
 
         <button
           className="btn btn-dark w-100 text-start d-flex align-items-center mb-3 px-3"
-          onClick={() => onNavigate('historial-compras')}
+          onClick={() => onNavigate('/')}
         >
           
         </button>

@@ -7,7 +7,8 @@
 }
 
 #carrucel .carousel-item img {
-    align-items: center;
-    width: 90vw;
-    height: 100vh;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según lo que necesites */
+    object-fit: cover; /* Mantiene la proporción de la imagen sin distorsionarla */
+    object-position: center; /* Centra la imagen si no ocupa todo el espacio */
 }
