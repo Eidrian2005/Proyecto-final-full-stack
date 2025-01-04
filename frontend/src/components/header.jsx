@@ -7,22 +7,26 @@ import logoTipo from "../img/logo.png";
 const Header = () => {
   const navigate = useNavigate();
 
+  // Función para navegar a la página de búsqueda
   const handleSearch = () => {
     navigate("/search");
   };
 
-  // Función para cerrar sesión
+  // Función para cerrar sesión, elimina la cookie y redirige a login
   const cerrarSesion = () => {
-    // Elimina la cookie que almacena el token
-    Cookies.remove("token");
-    navigate("/login"); // Redirigir a la página de inicio
+    Cookies.remove("token"); // Borramos la cookie que guarda el token
+    navigate("/login"); // Enviamos al login
   };
 
   return (
     <header className="header">
+      {/* Logo */}
       <img className="image" src={logoTipo} alt="Logo" />
+
+      {/* Navegación principal */}
       <nav className="nav">
         <ul className="nav-list">
+          {/* Opciones de navegación */}
           <li className="nav-item">
             <Link to="/" className="nav-link">
               Homepage
@@ -44,6 +48,8 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+
+        {/* Botón para cerrar sesión */}
         <button onClick={cerrarSesion} className="logout-button">
           Cerrar Sesión
         </button>
