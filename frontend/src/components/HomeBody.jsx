@@ -13,20 +13,6 @@ const HeaderOverlay = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // const handleScroll = () => {
-  //   const currentScrollY = window.scrollY;
-  //   if (currentScrollY > lastScrollY) {
-  //     setIsVisible(true); // Ocultar al desplazarse hacia abajo
-  //   }
-  //   setLastScrollY(currentScrollY);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [lastScrollY]);
 
   return (
     <div className={`header-overlay ${isVisible ? '' : 'hidden'}`}>
