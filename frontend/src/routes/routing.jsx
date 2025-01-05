@@ -12,7 +12,7 @@ import Paypalpage from '../pages/paypalpage';
 import PrivateRoute from '../components/PrivateRoutes';
 import Perfil from '../pages/perfil';
 import ListaDeseoPage from '../pages/listaDeseoPage';
-
+import HistorialUsuario from '../pages/historialUsuario';
 
 const Routing = () => {
 
@@ -25,6 +25,7 @@ return (
         <Route path="/AdminTask"element={<PrivateRoute requiredRole="administrador"><AdminPage /></PrivateRoute>}/>
         <Route path='/search' element={<Search/>} />
         <Route path="/Perfil" element={<Perfil />} />
+        <Route path="/Historial" element={<HistorialUsuario />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path='/Contactanos' element={<Contactanos/>}/>

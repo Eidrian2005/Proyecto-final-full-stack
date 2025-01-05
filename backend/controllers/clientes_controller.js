@@ -1,11 +1,14 @@
 const bcrypt = require("bcrypt");
 const { Clientes } = require("../models");
+const cloudinary = require('../config/cloudinaryConfig');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 //----------------------Get------------------------//
 const get_all_clientes = async (req, res) => {
   try {
-    const clienteId = req.usuario.id; // Obtenemos el ID del cliente autenticado
-    const cliente = await Clientes.findByPk(clienteId); // Obtenemos los datos del cliente autenticado
+    const clienteId = req.usuario.id; // ID del cliente autenticado
+    const cliente = await Clientes.findByPk(clienteId);
 
     if (!cliente) {
       return res.status(404).json({ error: "Cliente no encontrado." });
@@ -21,7 +24,7 @@ const get_all_clientes = async (req, res) => {
 //----------------------Get by ID------------------------//
 const get_cliente_by_id = async (req, res) => {
   try {
-    const clienteId = req.usuario.id; // Obtenemos el ID del cliente autenticado
+    const clienteId = req.usuario.id;
     const cliente = await Clientes.findByPk(clienteId);
 
     if (!cliente) {
@@ -38,16 +41,24 @@ const get_cliente_by_id = async (req, res) => {
 //----------------------Post------------------------//
 const post_cliente = async (req, res) => {
   try {
-    const { direccion, imagen, usuario, correo, contraseña } = req.body;
+    const { direccion, usuario, correo, contraseña } = req.body;
 
-    const esContrasenaEncriptada = await bcrypt.hash(contraseña, 10); 
+    const hashedPassword = await bcrypt.hash(contraseña, 10);
+
+    let imageUrl = null;
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+        folder: "clientes",
+      });
+      imageUrl = uploadResult.secure_url;
+    }
 
     const nuevoCliente = await Clientes.create({
       direccion,
-      imagen,
+      imagen: imageUrl,
       usuario,
       correo,
-      contraseña: esContrasenaEncriptada,
+      contraseña: hashedPassword,
     });
 
     res.status(201).json({
@@ -63,16 +74,29 @@ const post_cliente = async (req, res) => {
 //----------------------Put------------------------//
 const put_cliente = async (req, res) => {
   try {
-    const clienteId = req.usuario.id; // ID del cliente autenticado
-    const { direccion, imagen, usuario, correo } = req.body;
+    const clienteId = req.usuario.id;
+    const { direccion, usuario, correo } = req.body;
 
     const cliente = await Clientes.findByPk(clienteId);
-
     if (!cliente) {
       return res.status(404).json({ error: "Cliente no encontrado." });
     }
 
-    await cliente.update({ direccion, imagen, usuario, correo });
+    let imageUrl = cliente.imagen; // Mantener la URL existente si no hay nueva imagen
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+        folder: "clientes",
+      });
+      imageUrl = uploadResult.secure_url;
+    }
+
+    await cliente.update({
+      direccion,
+      imagen: imageUrl,
+      usuario,
+      correo,
+    });
 
     res.status(200).json({
       message: "Cliente actualizado correctamente.",
@@ -87,7 +111,7 @@ const put_cliente = async (req, res) => {
 //----------------------Delete------------------------//
 const delete_cliente = async (req, res) => {
   try {
-    const clienteId = req.usuario.id; // ID del cliente autenticado
+    const clienteId = req.usuario.id;
     const cliente = await Clientes.findByPk(clienteId);
 
     if (!cliente) {
@@ -95,7 +119,6 @@ const delete_cliente = async (req, res) => {
     }
 
     await cliente.destroy();
-
     res.status(204).send();
   } catch (error) {
     console.error(error);
