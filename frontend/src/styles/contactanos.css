@@ -1,8 +1,9 @@
 /* Estilos para el componente Contactanos */
 
 .contact-container {
+    
     font-family: Arial, sans-serif;
-    padding: 20px;
+    padding: 80px;
     margin: 0 auto;
     max-width: 800px;
     background-color: #f9f9f9;
