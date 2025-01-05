@@ -53,14 +53,10 @@ function ModalEditar({ producto }) {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProductoData((prevData) => ({
-          ...prevData,
-          imagen: reader.result, // Convierte la imagen a base64
-        }));
-      };
-      reader.readAsDataURL(file);
+      setProductoData((prevData) => ({
+        ...prevData,
+        imagen: file, // Archivo en lugar de base64
+      }));
     }
   };
 
