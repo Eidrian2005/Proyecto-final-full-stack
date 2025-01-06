@@ -3,7 +3,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const FormPaypal = ({ total }) => {
   const initialOptions = {
-    clientId: "AafAivx3ce3upGwTAKJZ4rdmAWfhvIzvqkcGLM1Cvq-EcyaaZ5ekRouExH_iXGEHDdo3FAFLZB9iCJJ0",
+    clientId: "ARgFmizcTqV7HILDZCqdyEQThmEdyzoihRrf7sUw3zDk9US3SyLd6skFDgajV3KPONJkhziDU-3_-oMP",
     currency: "USD",
     intent: "capture",
   };
@@ -23,6 +23,7 @@ const FormPaypal = ({ total }) => {
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
+      console.log(actions.order.capture());
       alert("Pago Completado: " + details.payer.name.given_name);
     });
   };
