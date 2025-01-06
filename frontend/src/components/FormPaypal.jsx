@@ -4,7 +4,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"; /
 const FormPaypal = ({ total }) => {
   // Configuración inicial para PayPal
   const initialOptions = {
-    clientId: "AafAivx3ce3upGwTAKJZ4rdmAWfhvIzvqkcGLM1Cvq-EcyaaZ5ekRouExH_iXGEHDdo3FAFLZB9iCJJ0", // ID del cliente (este es de prueba o producción)
+    clientId: "ARgFmizcTqV7HILDZCqdyEQThmEdyzoihRrf7sUw3zDk9US3SyLd6skFDgajV3KPONJkhziDU-3_-oMP", // ID del cliente (este es de prueba o producción)
     currency: "USD", // Moneda en la que se hará el pago
     intent: "capture", // Tipo de pago (captura inmediata)
   };
@@ -26,6 +26,7 @@ const FormPaypal = ({ total }) => {
   // Función que se ejecuta cuando el pago es aprobado
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
+      console.log(actions.order.capture());
       // Mostramos un mensaje con el nombre del comprador
       alert("Pago Completado: " + details.payer.name.given_name);
     });

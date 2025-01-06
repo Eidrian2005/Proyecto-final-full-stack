@@ -1,0 +1,23 @@
+.historial-compras-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .historial-compras-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .historial-compras-container .btn {
+    margin-bottom: 15px;
+  }
+  

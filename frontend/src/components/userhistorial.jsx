@@ -3,6 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Gethistorial } from "../services/GetHistorial";
+import '../styles/userHistorial.css'
 
 export default function HistorialDeCompras() {
   const [historial, setHistorial] = useState([]);
