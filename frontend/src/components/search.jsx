@@ -1,73 +1,80 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/search.css";
-import { Getproductos } from "../services/GetProductos";
+import { Link, useNavigate } from "react-router-dom"; // Para la navegación entre páginas
+import "../styles/search.css"; // Importa los estilos para esta página
+import { Getproductos } from "../services/GetProductos"; // Función para obtener productos
 
 const Search = () => {
-  const navigate = useNavigate();
-  const [records, setRecords] = useState([]);
-  const [filteredRecords, setFilteredRecords] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate(); // Hook para navegar a otras páginas
+  const [records, setRecords] = useState([]); // Estado para almacenar los productos obtenidos
+  const [filteredRecords, setFilteredRecords] = useState([]); // Estado para almacenar los productos filtrados
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
 
+  // Este efecto carga los productos cuando el componente se monta
   useEffect(() => {
     Getproductos()
       .then((data) => {
-        setRecords(data);
-        setFilteredRecords(data); // Mostrar todos inicialmente
+        setRecords(data); // Guarda los productos en el estado
+        setFilteredRecords(data); // Muestra todos los productos al principio
       })
       .catch((error) => {
-        console.error("Error fetching products", error);
+        console.error("Error fetching products", error); // Muestra un error si falla la obtención
       });
-  }, []);
+  }, []); // Solo se ejecuta al montar el componente
 
+  // Función para filtrar productos según lo que escriba el usuario
   const handleSearch = () => {
     if (!searchTerm.trim()) {
-      setFilteredRecords(records); // Si no hay búsqueda, mostrar todos
+      setFilteredRecords(records); // Si no hay búsqueda, muestra todos los productos
       return;
     }
 
     const filtered = records.filter(
       (product) =>
         product.nombre_producto &&
-        product.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
+        product.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase()) // Filtra por nombre
     );
-    setFilteredRecords(filtered);
+    setFilteredRecords(filtered); // Actualiza los productos filtrados
   };
 
+  // Función que se activa cuando el usuario presiona "Enter" en el campo de búsqueda
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
 
+  // Función para volver a la página principal al hacer clic en el botón de "volver"
   const handleBack = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/"); // Redirige a la página principal
   };
 
   return (
     <div className="container search-page">
+      {/* Barra de búsqueda */}
       <div className="row justify-content-center my-4">
         <div className="col-md-8">
           <div className="search-bar d-flex align-items-center">
             <button className="btn back-btn" onClick={handleBack}>
-              <i className="fa-solid fa-arrow-left"></i>
+              <i className="fa-solid fa-arrow-left"></i> {/* Icono para "volver" */}
             </button>
             <input
               type="text"
               className="form-control"
               placeholder="Search"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el término de búsqueda
+              onKeyPress={handleKeyPress} // Detecta si se presiona "Enter"
             />
             <button className="btn search-btn" onClick={handleSearch}>
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i> {/* Icono de búsqueda */}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Resultados de la búsqueda */}
       <div className="row">
         <div className="col-12">
           <h4 className="text-start">Search Results</h4>
@@ -92,7 +99,7 @@ const Search = () => {
                 </div>
               ))
             ) : (
-              <p className="text-center">No products found.</p>
+              <p className="text-center">No products found.</p> // Si no hay productos, muestra este mensaje
             )}
           </div>
         </div>

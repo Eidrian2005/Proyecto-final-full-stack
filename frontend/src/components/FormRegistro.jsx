@@ -1,41 +1,35 @@
 import React, { useState } from 'react';
-import { Post_clientes } from '../services/PostClientes';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/registro.css'; // Importa los estilos
+import { Post_clientes } from '../services/PostClientes'; // Importamos la función para registrar un cliente
+import { Link, useNavigate } from 'react-router-dom'; // Para la navegación entre páginas
+import '../styles/registro.css'; // Estilos personalizados para el formulario
 
 function FormRegister() {
-  const navigate = useNavigate();
-  const [usuario, setUsername] = useState('');
-  const [correo, setEmail] = useState('');
-  const [contraseña, setPassword] = useState('');
-  const [direccion, setDireccion] = useState('');
+  const navigate = useNavigate(); // Hook para redirigir después de enviar el formulario
+  const [usuario, setUsername] = useState(''); // Estado para el nombre del usuario
+  const [correo, setEmail] = useState(''); // Estado para el correo
+  const [contraseña, setPassword] = useState(''); // Estado para la contraseña
+  const [direccion, setDireccion] = useState(''); // Estado para la dirección
 
+  // Funciones para manejar los cambios en los inputs
   const cargarDireccion = (event) => {
     setDireccion(event.target.value);
   };
-
   const cargaUsuario = (event) => {
     setUsername(event.target.value);
   };
-
   const cargaEmail = (event) => {
     setEmail(event.target.value);
   };
-
   const cargaContra = (event) => {
     setPassword(event.target.value);
   };
 
+  // Función para manejar el envío del formulario
   const cargar = (e) => {
-    e.preventDefault();
-    console.log('Valores a enviar:', {
-      direccion,
-      usuario,
-      correo,
-      contraseña,
-    });
-    Post_clientes(direccion, '', usuario, correo, contraseña);
-    navigate('/Login');
+    e.preventDefault(); // Prevenimos el comportamiento por defecto del formulario (recargar la página)
+    console.log('Valores a enviar:', { direccion, usuario, correo, contraseña });
+    Post_clientes(direccion, '', usuario, correo, contraseña); // Enviamos los datos del formulario al servidor
+    navigate('/Login'); // Redirigimos al usuario a la página de login después de registrarse
   };
 
   return (
@@ -55,6 +49,7 @@ function FormRegister() {
           <h2 className="form-register-title">Registro</h2>
 
           <form onSubmit={cargar}>
+            {/* Campo para el nombre */}
             <div className="form-group">
               <label htmlFor="usuario" className="form-label">Nombre:</label>
               <input
@@ -68,6 +63,7 @@ function FormRegister() {
               />
             </div>
 
+            {/* Campo para el correo electrónico */}
             <div className="form-group">
               <label htmlFor="email" className="form-label">Correo electrónico:</label>
               <input
@@ -81,6 +77,7 @@ function FormRegister() {
               />
             </div>
 
+            {/* Campo para la dirección */}
             <div className="form-group">
               <label htmlFor="direccion" className="form-label">Dirección:</label>
               <input
@@ -94,6 +91,7 @@ function FormRegister() {
               />
             </div>
 
+            {/* Campo para la contraseña */}
             <div className="form-group">
               <label htmlFor="password" className="form-label">Contraseña:</label>
               <input
@@ -107,8 +105,10 @@ function FormRegister() {
               />
             </div>
 
+            {/* Botón para enviar el formulario */}
             <button className="form-register-button" type="submit">Crear cuenta</button>
 
+            {/* Enlace para redirigir a la página de login si ya tiene cuenta */}
             <p className="form-register-login">
               ¿Ya tienes cuenta? <Link to="/Login">Inicia Sesión</Link>
             </p>
