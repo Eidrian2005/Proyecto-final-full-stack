@@ -8,10 +8,6 @@
 - 2.Características
 - 3.Estructura del Proyecto
 - 4.Endpoints del Backend
-- 5.Instalación y Configuración
-- 6.Contribuciones
-- 7.Licencia
-- 8.Tecnologías utilizadas
 
 
 ## Backend
