@@ -1,4 +1,6 @@
 ## shedaboshop: Plataforma de venta
+Eidrian y NiXon
+
 
 - shedaboshop es una aplicacion de venta de productos varios el objetivo es apoyar y mejorar el sistema de venta del negocio de una persona y así impulsar su negocio
 
